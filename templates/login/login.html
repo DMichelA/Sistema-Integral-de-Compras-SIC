@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}
+SIC | UTEC
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+<body class="bg-success">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+              <div class="card-body p-1">
+                
+                <!-- Nested Row within Card Body -->
+                <div class="row justify-content-center">
+                  <div class="mx-auto d-lg-block">
+                      <img src="{% static 'img/halcon.png' %}" height="350px" width="auto">
+                  </div>
+                    <div class="col-lg-6">
+                      <div class="p-5">
+                        <div class="text-center">
+                          <h1>Bienvenid@</h1>
+                          <hr>
+                          <h5>El sistema permite el acceso a los procesos de control escolar de las compras de la institución.</h5>
+                        </div>
+                          <br>
+                            <div class="d-flex justify-content-center">
+                              <a class="btn btn-success btn-lg" href="index.html">
+                                <svg width="2em" height="2m" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                                </svg> Iniciar Sesión</a>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock%}

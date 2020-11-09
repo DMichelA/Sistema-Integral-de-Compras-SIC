@@ -19,16 +19,15 @@
 
 </head>
 
+
 <body>
-
+  {% block menu %}
   <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">SISTEMA INTEGRAL DE COMPRAS </div>
       <!-- Divider -->
       <hr class="sidebar-divider">
-      {% block menu %}
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
@@ -37,7 +36,6 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
       </div>
-      {% endblock %}
     </div>
     <!-- /#sidebar-wrapper -->
     
@@ -84,14 +82,15 @@
           </ul>
         </div>
       </nav>
+      {% endblock %}
       <div class="container-fluid">
 
         {% block content %}
-
         {% endblock%}
 
       </div>
-
+      
+    </div>
     <!-- /#page-content-wrapper 
         <h1 class="mt-4">Simple Sidebar</h1>
         <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
@@ -113,7 +112,5 @@
       $("#wrapper").toggleClass("toggled");
     });
   </script>
-
 </body>
-
 </html>
