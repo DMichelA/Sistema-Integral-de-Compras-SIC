@@ -1,0 +1,308 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Bienes | Servicios
+{% endblock %}
+ 
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">LLENADO DE BIENES/SERVICIOS</h1>
+<div class="p-1 mb-1 bg-success text-white text-center">ALINEACIÓN PIDE</div>
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                    <label for="{{form.eje_pide.name}}">{{form.eje_pide.label}}:</label>
+                    {{form.eje_pide}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.estrategia_pide.name}}">{{form.estrategia_pide.label}}:</label>
+                {{form.estrategia_pide}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-warning text-white text-center">ALINEACIÓN AL POA</div>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <label for="{{form.programa_poa.name}}">{{form.programa_poa.label}}:</label>
+                {{form.programa_poa}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <label for="{{form.componente_poa.name}}">{{form.componente_poa.label}}:</label>
+                {{form.componente_poa}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <label for="{{form.proyecto_poa.name}}">{{form.proyecto_poa.label}}:</label>
+                {{form.proyecto_poa}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.actividad_poa.name}}">{{form.actividad_poa.label}}:</label>
+                {{form.actividad_poa}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.entregable_poa.name}}">{{form.entregable_poa.label}}:</label>
+                {{form.entregable_poa}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-info text-white text-center">USUARIO</div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.nombre_responsable.name}}">{{form.nombre_responsable.label}}:</label>
+                {{form.nombre_responsable}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.area_solicitante.name}}">{{form.area_solicitante.label}}:</label>
+                {{form.area_solicitante}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-danger text-white text-center">BIEN O SERVICIO</div>
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-5">
+            <div class="form-group">
+                <label for="{{form.descrip_partida.name}}">{{form.descrip_partida.label}}:</label>
+                {{form.descrip_partida}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.codigo_partida.name}}">{{form.codigo_partida.label}}:</label>
+                {{form.codigo_partida}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.codigo_pestatal.name}}">{{form.codigo_pestatal.label}}:</label>
+                {{form.codigo_pestatal}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.descrip_general_bien.name}}">{{form.descrip_general_bien.label}}:</label>
+                {{form.descrip_general_bien}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.espeficaciones_tecnicas.name}}">{{form.espeficaciones_tecnicas.label}}:</label>
+                {{form.espeficaciones_tecnicas}}
+            </div>
+        </div>
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.capitulo.name}}">{{form.capitulo.label}}:</label>
+                {{form.capitulo}}
+            </div>
+        </div>
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.tipo.name}}">{{form.tipo.label}}:</label>
+                {{form.tipo}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.unidad_medida.name}}">{{form.unidad_medida.label}}:</label>
+                {{form.unidad_medida}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cantidad_bienes.name}}">{{form.cantidad_bienes.label}}:</label>
+                {{form.cantidad_bienes}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.precio_unitario.name}}">{{form.precio_unitario.label}}:</label>
+                {{form.precio_unitario}}
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.total.name}}">{{form.total.label}}:</label>
+                {{form.total}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-primary text-white text-center">FUENTE Y TOTAL ANUAL</div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.ingresos_propios.name}}">{{form.ingresos_propios.label}}:</label>
+                {{form.ingresos_propios}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.recurso_fiscal.name}}">{{form.recurso_fiscal.label}}:</label>
+                {{form.recurso_fiscal}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.recurso_federal.name}}">{{form.recurso_federal.label}}:</label>
+                {{form.recurso_federal}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.presupues_total_anual.name}}">{{form.presupues_total_anual.label}}:</label>
+                {{form.presupues_total_anual}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-secondary text-white text-center">MODALIDAD DE ADJUDICACIÓN</div>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.licitacion_publica.name}}">{{form.licitacion_publica.label}}:</label>
+                {{form.licitacion_publica}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.invitacion_personas.name}}">{{form.invitacion_personas.label}}:</label>
+                {{form.invitacion_personas}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.adjudicacion_directa.name}}">{{form.adjudicacion_directa.label}}:</label>
+                {{form.adjudicacion_directa}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.partidas_paaays.name}}">{{form.partidas_paaays.label}}:</label>
+                {{form.partidas_paaays}}
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-warning text-white text-center">CALENDARIZADO ANUAL</div>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_enero.name}}">{{form.cal_enero.label}}:</label>
+                {{form.cal_enero}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_febrero.name}}">{{form.cal_febrero.label}}:</label>
+                {{form.cal_febrero}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_marzo.name}}">{{form.cal_marzo.label}}:</label>
+                {{form.cal_marzo}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_abril.name}}">{{form.cal_abril.label}}:</label>
+                {{form.cal_abril}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_mayo.name}}">{{form.cal_mayo.label}}:</label>
+                {{form.cal_mayo}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_junio.name}}">{{form.cal_junio.label}}:</label>
+                {{form.cal_junio}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_julio.name}}">{{form.cal_julio.label}}:</label>
+                {{form.cal_julio}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_agosto.name}}">{{form.cal_agosto.label}}:</label>
+                {{form.cal_agosto}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_septiembre.name}}">{{form.cal_septiembre.label}}:</label>
+                {{form.cal_septiembre}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_octubre.name}}">{{form.cal_octubre.label}}:</label>
+                {{form.cal_octubre}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_noviembre.name}}">{{form.cal_noviembre.label}}:</label>
+                {{form.cal_noviembre}}
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.cal_diciembre.name}}">{{form.cal_diciembre.label}}:</label>
+                {{form.cal_diciembre}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for="{{form.status.name}}">{{form.status.label}}:</label>
+                {{form.status}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+    </div><br>
+</form>
+{% endblock%}

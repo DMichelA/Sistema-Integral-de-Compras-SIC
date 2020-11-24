@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Delete | Bienes/Servicios
+{% endblock %}
+ 
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <h1>¿Desea eliminar el registro {{ bien.id }} solicitado el {{ bien.fecha_solicitud }}?</h1>
+    <button class= "btn btn-danger" type="submit">Si, eliminar</button>
+    <a class= "btn btn-secondary" href="{% url 'listar_bienes' %}">Cancelar</a>
+</form>
+{% endblock %}
