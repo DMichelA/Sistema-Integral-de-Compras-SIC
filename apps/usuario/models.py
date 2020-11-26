@@ -131,7 +131,8 @@ capitulos = [
 tipo = [
     ('', 'Seleccionar...'),
     ('Bien', 'Bien'),
-    ('Servicio', 'Servicio')
+    ('Servicio', 'Servicio'),
+    ('Mobiliario', 'Mobiliario'),
 ]
 
 unidades_medida = [
@@ -154,8 +155,7 @@ unidades_medida = [
     ('Pieza', 'Pieza'),
     ('Rollo', 'Rollo'),
     ('Servicio', 'Servicio'),
-    ('Tambo', 'Tambo')
-
+    ('Tambo', 'Tambo'),
 ]
 
 status_bien = [
@@ -196,14 +196,13 @@ class Bienes(models.Model):
     descrip_partida = models.ForeignKey(Partidas, null=False, blank=False, on_delete=models.CASCADE)
     codigo_partida = models.IntegerField()
     codigo_pestatal = models.IntegerField()
-    descrip_general_bien = models.CharField(max_length=60, null=True, blank=True, default='Sin descripción')
-    espeficaciones_tecnicas = models.CharField(max_length=60, null=True, blank=True)
+    descrip_general_bien = models.CharField(max_length=60, null=False, blank=True, default='Sin descripción') #Null False el formulario no requiere un valor, pero la base de datos sí. 
+    espeficaciones_tecnicas = models.CharField(max_length=60, null=False, blank=True)
     capitulo = models.IntegerField(
         null=False, blank=False,
         choices=capitulos
     )
     tipo = models.CharField(
-        blank=False, 
         #default='Unspecified', Desaparece la opcion None '----'
         max_length=15, 
         choices=tipo
@@ -214,26 +213,26 @@ class Bienes(models.Model):
     cantidad_bienes = models.IntegerField()
     precio_unitario = models.DecimalField(max_digits=6, decimal_places=2)
     total = models.DecimalField(max_digits=8, decimal_places=2)
-    ingresos_propios = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    recurso_fiscal = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    recurso_federal = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    presupues_total_anual = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    licitacion_publica = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    invitacion_personas = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    adjudicacion_directa = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    partidas_paaays = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_enero = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_febrero = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_marzo = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_abril = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_mayo = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_junio = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_julio = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_agosto = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_septiembre = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_octubre = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_noviembre = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
-    cal_diciembre = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, default=0)
+    ingresos_propios = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0) 
+    recurso_fiscal = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    recurso_federal = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    presupues_total_anual = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    licitacion_publica = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    invitacion_personas = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    adjudicacion_directa = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    partidas_paaays = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_enero = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_febrero = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_marzo = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_abril = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_mayo = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_junio = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_julio = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_agosto = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_septiembre = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_octubre = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_noviembre = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    cal_diciembre = models.DecimalField(max_digits=6, decimal_places=2,null=False, blank=False, default=0)
     status = models.CharField(
         max_length=30, 
         choices=status_bien,
