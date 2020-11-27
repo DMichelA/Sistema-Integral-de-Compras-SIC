@@ -111,6 +111,7 @@
   {% block extrajs %}
   {% endblock %}
 
+  {% block scriptcode %}
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
@@ -118,5 +119,7 @@
       $("#wrapper").toggleClass("toggled");
     });
   </script>
+  {% endblock %}
+
 </body>
 </html>

@@ -156,7 +156,7 @@ Bienes/Servicios | Verificados
                 <tr>
                     <td style="text-align:center;">
                         <label class="checkbox-bootstrap checkbox-lg">
-                            <input type="checkbox">
+                            <input id= "checkbox" type="checkbox">
                         </label>
                     </td>
                     <td>{{ bien.eje_pide }}</td>
@@ -210,4 +210,27 @@ Bienes/Servicios | Verificados
             </tbody>
         </table>
     </div>
+{% endblock %}
+
+
+{% block scriptcode %}
+
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+
+    <script>
+      $(function(){
+          var test = localStorage.input === 'true'? true: false;
+          $('input').prop('checked', test);
+      });
+      $('input').on('change', function() {
+          localStorage.input = $(this).is(':checked');
+          console.log($(this).is(':checked'));
+      });
+      </script>
+
 {% endblock %}
