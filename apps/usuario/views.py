@@ -32,9 +32,21 @@ def bienes_update(request, id_bien):
         return redirect('listar_bienes')
     return render(request, 'usuario/update.html', {'form':form})
 
+'''
 def bienes_delete(request, id_bien):
     bien = Bienes.objects.get(id=id_bien)
     if request.method == 'POST':
         bien.delete()
         return redirect('listar_bienes')
     return render(request, 'usuario/delete.html', {'bien':bien})
+'''
+
+def bienes_delete(request, id_bien):
+    bien = Bienes.objects.get(id=id_bien)
+    if request.method == 'GET':
+        form = BienesForm(instance=bien)
+    else:
+        form = BienesForm(request.POST, instance=bien)
+        bien.delete()
+        return redirect('listar_bienes')
+    return render(request, 'usuario/delete.html', {'form':form})

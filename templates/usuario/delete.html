@@ -1,10 +1,10 @@
 {% extends 'base/base.html' %}
 
-{% block title %}
-Delete | Bienes/Servicios
-{% endblock %}
-
 {% load static %}
+
+{% block title %}
+Bienes | Servicios
+{% endblock %}
  
 {% block menu %}
 <div class="d-flex" id="wrapper">
@@ -85,8 +85,372 @@ Delete | Bienes/Servicios
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <h1>¿Desea eliminar el registro {{ bien.id }} solicitado el {{ bien.fecha_solicitud }}?</h1>
-    <button class= "btn btn-danger" type="submit">Si, eliminar</button>
-    <a class= "btn btn-secondary" href="{% url 'listar_bienes' %}">Cancelar</a>
+    <h1 class="text-center">ACTUALIZACIÓN BIENES/SERVICIOS</h1>
+    <div class="p-1 mb-1 bg-info text-white text-center">USUARIO</div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.nombre_responsable.name}}">{{form.nombre_responsable.label}}:</label>
+                <fieldset disabled="disabled">
+                  {{form.nombre_responsable}}
+                </fieldset>
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-6">
+            <div class="form-group">
+                <label for="{{form.area_solicitante.name}}">{{form.area_solicitante.label}}:</label>
+                <fieldset disabled="disabled">
+                  {{form.area_solicitante}}
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-1 mb-1 bg-success text-white text-center">ALINEACIÓN PIDE</div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group">
+                    <label for="{{form.eje_pide.name}}">{{form.eje_pide.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.eje_pide}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group">
+                    <label for="{{form.estrategia_pide.name}}">{{form.estrategia_pide.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.estrategia_pide}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-1 mb-1 bg-warning text-white text-center">ALINEACIÓN AL POA</div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <label for="{{form.programa_poa.name}}">{{form.programa_poa.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.programa_poa}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <label for="{{form.componente_poa.name}}">{{form.componente_poa.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.componente_poa}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <label for="{{form.proyecto_poa.name}}">{{form.proyecto_poa.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.proyecto_poa}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group">
+                    <label for="{{form.actividad_poa.name}}">{{form.actividad_poa.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.actividad_poa}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group">
+                    <label for="{{form.entregable_poa.name}}">{{form.entregable_poa.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.entregable_poa}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-1 mb-1 bg-danger text-white text-center">BIEN O SERVICIO</div>
+
+        <div class="row">
+            <div class="col-md-5 col-md-offset-5">
+                <div class="form-group">
+                    <label for="{{form.descrip_partida.name}}">{{form.descrip_partida.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.descrip_partida}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.codigo_partida.name}}">{{form.codigo_partida.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.codigo_partida}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.codigo_pestatal.name}}">{{form.codigo_pestatal.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.codigo_pestatal}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.descrip_general_bien.name}}">{{form.descrip_general_bien.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.descrip_general_bien}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.espeficaciones_tecnicas.name}}">{{form.espeficaciones_tecnicas.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.espeficaciones_tecnicas}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.capitulo.name}}">{{form.capitulo.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.capitulo}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.tipo.name}}">{{form.tipo.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.tipo}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.unidad_medida.name}}">{{form.unidad_medida.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.unidad_medida}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cantidad_bienes.name}}">{{form.cantidad_bienes.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cantidad_bienes}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.precio_unitario.name}}">{{form.precio_unitario.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.precio_unitario}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.total.name}}">{{form.total.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.total}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-1 mb-1 bg-primary text-white text-center">FUENTE Y TOTAL ANUAL</div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.ingresos_propios.name}}">{{form.ingresos_propios.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.ingresos_propios}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.recurso_fiscal.name}}">{{form.recurso_fiscal.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.recurso_fiscal}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.recurso_federal.name}}">{{form.recurso_federal.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.recurso_federal}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.presupues_total_anual.name}}">{{form.presupues_total_anual.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.presupues_total_anual}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-1 mb-1 bg-warning text-white text-center">CALENDARIZADO ANUAL</div>
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_enero.name}}">{{form.cal_enero.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_enero}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_febrero.name}}">{{form.cal_febrero.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_febrero}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_marzo.name}}">{{form.cal_marzo.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_marzo}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_abril.name}}">{{form.cal_abril.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_abril}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_mayo.name}}">{{form.cal_mayo.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_mayo}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_junio.name}}">{{form.cal_junio.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_junio}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_julio.name}}">{{form.cal_julio.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_julio}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_agosto.name}}">{{form.cal_agosto.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_agosto}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_septiembre.name}}">{{form.cal_septiembre.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_septiembre}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_octubre.name}}">{{form.cal_octubre.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_octubre}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_noviembre.name}}">{{form.cal_noviembre.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_noviembre}}
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.cal_diciembre.name}}">{{form.cal_diciembre.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.cal_diciembre}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <label for="{{form.status.name}}">{{form.status.label}}:</label>
+                    <fieldset disabled="disabled">
+                      {{form.status}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <!--  <div class="p-1 mb-1 bg-secondary text-white text-center">MODALIDAD DE ADJUDICACIÓN</div> --->
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <!--<label for="{{form.licitacion_publica.name}}">{{form.licitacion_publica.label}}:</label>--->
+                    {{form.licitacion_publica.as_hidden}}
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <!-- <label for="{{form.invitacion_personas.name}}">{{form.invitacion_personas.label}}:</label> --->
+                    {{form.invitacion_personas.as_hidden}}
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <!-- <label for="{{form.adjudicacion_directa.name}}">{{form.adjudicacion_directa.label}}:</label> --->
+                    {{form.adjudicacion_directa.as_hidden}}
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                <div class="form-group">
+                    <!-- <label for="{{form.partidas_paaays.name}}">{{form.partidas_paaays.label}}:</label> --->
+                    {{form.partidas_paaays.as_hidden}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">Eliminar</button>
+            </div>
+        </div><br>
 </form>
-{% endblock %}
+{% endblock%}
