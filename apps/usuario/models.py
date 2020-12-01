@@ -165,6 +165,11 @@ status_bien = [
     ('Actualizado', 'Actualizado'),
 ]
 
+validacion = [
+    ('No validado', 'No validado'),
+    ('Validado', 'Validado'),
+]
+
 class Partidas(models.Model):
     descripcion = models.CharField(max_length=200)
     def __str__(self):
@@ -239,3 +244,8 @@ class Bienes(models.Model):
         default='Normal'
     )
     fecha_solicitud = models.DateField(auto_now_add=True)
+    validacion = models.CharField(
+        max_length=15,
+        choices=validacion,
+        default='No validado'
+    )

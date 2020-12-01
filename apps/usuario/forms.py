@@ -49,6 +49,7 @@ class BienesForm(forms.ModelForm):
             'cal_noviembre',
             'cal_diciembre',
             'status',
+            'validacion'
         ]
         labels = {
             'eje_pide': 'Eje',
@@ -92,6 +93,7 @@ class BienesForm(forms.ModelForm):
             'cal_noviembre': 'Noviembre',
             'cal_diciembre': 'Diciembre',
             'status': 'Status',
+            'validacion': 'Validación'
         }
         widgets = {
             'eje_pide': forms.Select(attrs={'class': 'form-control'}),
@@ -135,6 +137,7 @@ class BienesForm(forms.ModelForm):
             'cal_noviembre': forms.NumberInput(attrs={'class': 'form-control'}),
             'cal_diciembre': forms.NumberInput(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
+            'validacion': forms.RadioSelect(),
         }
 
     def __init__(self, *args, **kwargs):

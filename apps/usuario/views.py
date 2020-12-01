@@ -50,3 +50,8 @@ def bienes_delete(request, id_bien):
         bien.delete()
         return redirect('listar_bienes')
     return render(request, 'usuario/delete.html', {'form':form})
+
+def bienes_verificados(request):
+    bien = Bienes.objects.all().order_by('id')
+    contexto = {'bienes':bien}
+    return render(request, 'usuario/verificados.html', contexto)
