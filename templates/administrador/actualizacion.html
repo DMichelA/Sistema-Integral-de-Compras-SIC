@@ -1,10 +1,10 @@
 {% extends 'base/base.html' %}
 
+{% load static %}
+
 {% block title %}
 Bienes | Servicios
 {% endblock %}
-
-{% load static %}
  
 {% block menu %}
 <div class="d-flex" id="wrapper">
@@ -14,31 +14,28 @@ Bienes | Servicios
       <!-- Divider -->
       <hr class="sidebar-divider">
       <div class="list-group list-group-flush ">
-          <a href="{% url 'insertar_bienes' %}" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-          </svg> Llenado de Bienes/Servicios</a>
-          <a href="{% url 'listar_bienes' %}" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-ui-radios" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
-            <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-          </svg> Listado de Bienes/Servicios</a>
-          <a href="{% url 'bienes_verificados' %}" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-ui-checks" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
-            <path fill-rule="evenodd" d="M2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646l2-2a.5.5 0 1 0-.708-.708L2.5 4.293l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0zm0 8l2-2a.5.5 0 0 0-.708-.708L2.5 12.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0z"/>
-            <path d="M7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
-            <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-          </svg> Bienes/Servicios Verificados</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-ruled" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <a href="{% url 'listado_bienes' %}" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-ui-radios" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+          <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg> Bienes/Servicios</a>
+        <a href="{% url 'bienes_adjudicados' %}" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-ui-checks" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+          <path fill-rule="evenodd" d="M2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646l2-2a.5.5 0 1 0-.708-.708L2.5 4.293l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0zm0 8l2-2a.5.5 0 0 0-.708-.708L2.5 12.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0z"/>
+          <path d="M7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+          <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+          </svg> Bienes/Servicios Adjudicados y Validados</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-ruled" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M5 10H3V9h10v1H6v2h7v1H6v2H5v-2H3v-1h2v-2z"/>
             <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
             <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
           </svg> Requisiciones</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-table" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
-          </svg> Ver Requisción</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
             <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+          </svg> Consulta de Requisiciones</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-files" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/>
+            <path d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z"/>
           </svg> Historial de Requisiciones</a>
       </div>
     </div>
@@ -61,7 +58,7 @@ Bienes | Servicios
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'usuario_index' %}">Home <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-grid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <a class="nav-link" href="{% url 'administrador_index' %}">Home <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-grid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
               </svg><span class="sr-only">(current)</span></a>
             </li>
@@ -92,9 +89,8 @@ Bienes | Servicios
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <h1 class="text-center">LLENADO DE BIENES/SERVICIOS</h1>
+    <h1 class="text-center">ACTUALIZACIÓN BIENES/SERVICIOS</h1>
     <div class="p-1 mb-1 bg-info text-white text-center">USUARIO</div>
-
     <div class="row">
         <div class="col-md-6 col-md-offset-6">
             <div class="form-group">
@@ -109,7 +105,6 @@ Bienes | Servicios
             </div>
         </div>
     </div>
-
 
     <div class="p-1 mb-1 bg-success text-white text-center">ALINEACIÓN PIDE</div>
         <div class="row">
@@ -353,45 +348,45 @@ Bienes | Servicios
             </div>
         </div>
 
-        <!--  <div class="p-1 mb-1 bg-secondary text-white text-center">MODALIDAD DE ADJUDICACIÓN</div> --->
+        <div class="p-1 mb-1 bg-secondary text-white text-center">MODALIDAD DE ADJUDICACIÓN</div>
 
         <div class="row">
             <div class="col-md-3 col-md-offset-2">
                 <div class="form-group">
-                    <!--<label for="{{form.licitacion_publica.name}}">{{form.licitacion_publica.label}}:</label>--->
-                    {{form.licitacion_publica.as_hidden}}
+                    <label for="{{form.licitacion_publica.name}}">{{form.licitacion_publica.label}}:</label>
+                    {{form.licitacion_publica}}
                 </div>
             </div>
             <div class="col-md-3 col-md-offset-2">
                 <div class="form-group">
-                    <!-- <label for="{{form.invitacion_personas.name}}">{{form.invitacion_personas.label}}:</label> --->
-                    {{form.invitacion_personas.as_hidden}}
+                    <label for="{{form.invitacion_personas.name}}">{{form.invitacion_personas.label}}:</label>
+                    {{form.invitacion_personas}}
                 </div>
             </div>
             <div class="col-md-3 col-md-offset-2">
                 <div class="form-group">
-                    <!-- <label for="{{form.adjudicacion_directa.name}}">{{form.adjudicacion_directa.label}}:</label> --->
-                    {{form.adjudicacion_directa.as_hidden}}
+                    <label for="{{form.adjudicacion_directa.name}}">{{form.adjudicacion_directa.label}}:</label>
+                    {{form.adjudicacion_directa}}
                 </div>
             </div>
             <div class="col-md-3 col-md-offset-2">
                 <div class="form-group">
-                    <!-- <label for="{{form.partidas_paaays.name}}">{{form.partidas_paaays.label}}:</label> --->
-                    {{form.partidas_paaays.as_hidden}}
+                    <label for="{{form.partidas_paaays.name}}">{{form.partidas_paaays.label}}:</label>
+                    {{form.partidas_paaays}}
                 </div>
             </div>
         </div>
 
         <div class="row d-flex justify-content-center">
             <div class="form-check">
-                <!-- <label for="{{form.validacion.name}}">{{form.validacion.label}}:</label> --->
-                {{form.validacion.as_hidden}}
+                <label for="{{form.validacion.name}}">{{form.validacion.label}}:</label>
+                {{form.validacion}}
             </div>
         </div>
 
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-warning" type="submit">Actualizar</button>
             </div>
         </div><br>
 </form>
