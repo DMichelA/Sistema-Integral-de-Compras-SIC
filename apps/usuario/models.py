@@ -201,14 +201,14 @@ class Bienes(models.Model):
     descrip_partida = models.ForeignKey(Partidas, null=False, blank=False, on_delete=models.CASCADE)
     codigo_partida = models.IntegerField()
     codigo_pestatal = models.IntegerField()
-    descrip_general_bien = models.CharField(max_length=60, null=False, blank=True, default='Sin descripción') #Null False el formulario no requiere un valor, pero la base de datos sí. 
+    descrip_general_bien = models.CharField(max_length=60, null=False, blank=True, default='Sin descripción') # Null False el formulario no requiere un valor, pero la base de datos sí. 
     espeficaciones_tecnicas = models.CharField(max_length=60, null=False, blank=True)
     capitulo = models.IntegerField(
         null=False, blank=False,
         choices=capitulos
     )
     tipo = models.CharField(
-        #default='Unspecified', Desaparece la opcion None '----'
+        # default='Unspecified', Desaparece la opcion None '----'
         max_length=15, 
         choices=tipo
     )
