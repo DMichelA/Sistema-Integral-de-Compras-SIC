@@ -63,3 +63,6 @@ def login_success(request):
     else:
         return redirect('usuario_index')
 '''
+
+def accounterror(request):
+    return redirect('login')
