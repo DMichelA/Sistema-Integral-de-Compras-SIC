@@ -102,7 +102,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '_Rs383bXT5TmeHQtPDiePlo5'
 
 WHITELISTED_DOMAINS = ['utectulancingo.edu.mx']
 
-# Desactivar al ingresar todos los usuarios en el sistema
+# Activar despues de ingresar todos los usuarios en el sistema
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

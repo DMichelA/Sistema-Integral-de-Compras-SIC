@@ -103,7 +103,7 @@ class BienesForm(forms.ModelForm):
             'proyecto_poa': forms.Select(attrs={'class': 'form-control'}),
             'actividad_poa': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Escribe una actividad'}),
             'entregable_poa': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Escribe un entregable'}),
-            'nombre_responsable': forms.TextInput(attrs={'class': 'form-control'}), #Es select para traer los solicitantes de la BD
+            'nombre_responsable': forms.Select(attrs={'class': 'form-control'}),
             'area_solicitante': forms.Select(attrs={'class': 'form-control'}),
             'descrip_partida': forms.Select(attrs={'class': 'form-control'}),
             'codigo_partida': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Introduce el código de la partida seleccionada'}),
@@ -111,7 +111,7 @@ class BienesForm(forms.ModelForm):
             'descrip_general_bien': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escribe una descripción'}),
             'espeficaciones_tecnicas': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escribe las especificaciones técnicas'}),
             'capitulo': forms.Select(attrs={'class': 'form-control'}),
-            'tipo': forms.Select(attrs={'class': 'form-control'}), #Puede ser tipo RadioSelect 
+            'tipo': forms.Select(attrs={'class': 'form-control'}), # Puede ser tipo RadioSelect 
             'unidad_medida': forms.Select(attrs={'class': 'form-control'}),
             'cantidad_bienes': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Introduce la cantidad de bienes o servicios'}),
             'precio_unitario': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Introduce el precio unitario del bien o servicio'}),
@@ -143,3 +143,4 @@ class BienesForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BienesForm, self).__init__(*args, **kwargs)
         self.fields['descrip_partida'].empty_label ='Selecccionar...'
+        self.fields['nombre_responsable'].empty_label = 'Seleccionar...'

@@ -88,7 +88,7 @@ Home Administrador
 
 {% block content %}
   {% if user.is_authenticated and user.is_staff == True %}
-  <h1>BIENVENIDO AL SIC, {{ user.username }}.</h1>
+  <h1>BIENVENIDO AL SIC {{ user.username }}, {{ user.name }}.</h1>
   {% endif %}
 {% endblock%}
 

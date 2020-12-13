@@ -92,6 +92,6 @@ Home Usuario
 
 {% block content %}
     {% if user.is_authenticated %}
-    <h1>BIENVENIDO AL SIC, {{ user.username }}.</h1>
+    <h1>BIENVENIDO AL SIC {{ user.username }}, {{ user.name }}.</h1>
     {% endif %}
 {% endblock%}

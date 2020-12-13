@@ -1,4 +1,5 @@
 from django.db import models
+from apps.login.models import User
 
 ejes = [
     ('', 'Seleccionar...'),
@@ -194,7 +195,7 @@ class Bienes(models.Model):
     )
     actividad_poa = models.CharField(max_length=60)
     entregable_poa = models.CharField(max_length=60)
-    nombre_responsable = models.CharField(max_length=50)
+    nombre_responsable = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     area_solicitante = models.CharField(
         max_length=45, choices=areas_solicitantes
     )

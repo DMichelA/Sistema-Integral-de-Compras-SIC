@@ -29,19 +29,23 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    rol = models.CharField(max_length=255)
+    area = models.CharField(max_length=255)
     password = models.CharField(max_length=128, null=False, blank=True) # Agregue para prueba password para dejar vacias
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    rol = models.CharField(max_length=255)
-    area = models.CharField(max_length=255)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
     objects = UserManager()
+
+    def __str__(self):
+        return '{}'.format(self.name)
 
 
 '''

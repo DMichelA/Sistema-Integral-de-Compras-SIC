@@ -17,7 +17,7 @@ def bienes_insert(request):
     return render(request, 'usuario/insert.html', {'form':form})
 
 def bienes_list(request):
-    bien = Bienes.objects.all().order_by('id')
+    bien = Bienes.objects.filter(nombre_responsable=request.user).order_by('id')
     contexto = {'bienes':bien}
     return render(request, 'usuario/list.html', contexto)
 
@@ -52,6 +52,6 @@ def bienes_delete(request, id_bien):
     return render(request, 'usuario/delete.html', {'form':form})
 
 def bienes_verificados(request):
-    bien = Bienes.objects.all().order_by('id')
+    bien = Bienes.objects.filter(nombre_responsable=request.user).order_by('id')
     contexto = {'bienes':bien}
     return render(request, 'usuario/verificados.html', contexto)
