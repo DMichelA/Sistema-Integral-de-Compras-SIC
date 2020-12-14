@@ -92,6 +92,18 @@ Home Usuario
 
 {% block content %}
     {% if user.is_authenticated %}
-    <h1>BIENVENIDO AL SIC {{ user.username }}, {{ user.name }}.</h1>
+    <div class="card mx-auto text-center border-success mb-3" style="max-width: 18rem;">
+      <h4 class="card-header text-white bg-success text-uppercase">Perfil de Usuario</h4>
+      <div class="card-body">
+        <div class="avatar">
+          <img src="{% static 'img/halcon.png' %}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+        </div>
+      <h5><b>Usuario: </b>{{ user.name }}</h5>
+      <h5><b>Alias: </b>{{ user.username }}</h5>
+      <h5><b>Correo: </b>{{ user.email }}</h1>
+        <h5><b>Rol: </b>{{ user.rol }}</h5>
+      <h5><b>Area a la que pertenece: </b>{{ user.area }}</h5>
+      </div>
+    </div>
     {% endif %}
 {% endblock%}

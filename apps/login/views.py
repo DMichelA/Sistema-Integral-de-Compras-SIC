@@ -57,7 +57,7 @@ def login_success(request):
 # Redireccion tomando en cuenta rol
 '''
 def login_success(request):
-    if request.user.rol == 'admin':
+    if request.user.rol == 'Administrador':
         # user es admin
         return redirect('administrador_index')
     else:
@@ -66,3 +66,4 @@ def login_success(request):
 
 def accounterror(request):
     return redirect('login')
+
