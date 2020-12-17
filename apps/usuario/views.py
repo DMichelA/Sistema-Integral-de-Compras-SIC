@@ -11,7 +11,7 @@ def bienes_insert(request):
         form = BienesForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('listar_bienes') #Redirecciona a la pagina usuario/index
+        return redirect('listar_bienes') #Redirecciona a la pagina list
     else:
         form = BienesForm()
     return render(request, 'usuario/insert.html', {'form':form})

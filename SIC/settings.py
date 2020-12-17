@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.usuario',
     'apps.administrador',
     'apps.login',
+    'apps.requisicion',
     'social_django',
 ]
 

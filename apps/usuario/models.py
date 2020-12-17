@@ -250,3 +250,6 @@ class Bienes(models.Model):
         choices=validacion,
         default='No validado'
     )
+
+    def __str__(self):
+        return '{}'.format(self.id)
