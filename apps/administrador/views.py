@@ -33,7 +33,15 @@ def bienes_adjudicar(request, id_bien):
     return render(request, 'administrador/adjudicacion.html', {'form':form})
 
 def bienes_adjudicados(request):
+    busqueda = request.POST.get("buscar")
     bien = Bienes.objects.all().order_by('id')
+
+    if busqueda:
+        bien = Bienes.objects.filter(
+            Q(area_solicitante__icontains = busqueda) |
+            Q(programa_poa__icontains = busqueda) |
+            Q(codigo_partida__icontains = busqueda)
+        ).distinct()
     contexto = {'bienes':bien}
     return render(request, 'administrador/verificados.html', contexto)
 
