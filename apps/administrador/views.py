@@ -2,13 +2,22 @@ from django.shortcuts import render,redirect
 
 from apps.usuario.forms import BienesForm
 from apps.usuario.models import Bienes
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
     return render(request, 'administrador/index.html')
 
 def listado_bienes(request):
+    busqueda = request.POST.get("buscar")
     bien = Bienes.objects.all().order_by('id')
+
+    if busqueda:
+        bien = Bienes.objects.filter(
+            Q(area_solicitante__icontains = busqueda) |
+            Q(programa_poa__icontains = busqueda) |
+            Q(codigo_partida__icontains = busqueda)
+        ).distinct()
     contexto = {'bienes':bien}
     return render(request, 'administrador/listado.html', contexto)
 
