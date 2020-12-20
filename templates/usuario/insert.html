@@ -197,7 +197,7 @@ Bienes | Servicios
                     {{form.espeficaciones_tecnicas}}
                 </div>
             </div>
-            <div class="col-md-2 col-md-offset-2">
+            <div class="col-md-3 col-md-offset-2">
                 <div class="form-group">
                     <label for="{{form.capitulo.name}}">{{form.capitulo.label}}:</label>
                     {{form.capitulo}}
@@ -224,13 +224,18 @@ Bienes | Servicios
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-2">
                 <div class="form-group">
                     <label for="{{form.precio_unitario.name}}">{{form.precio_unitario.label}}:</label>
                     {{form.precio_unitario}}
                 </div>
             </div>
-            <div class="col-md-6 col-md-offset-2">
+
+            <div class="col text-center">
+                <button class="btn btn-info" type="button" onclick="calculate()">Calcular Total</button>
+            </div>
+
+            <div class="col-md-4 col-md-offset-2">
                 <div class="form-group">
                     <label for="{{form.total.name}}">{{form.total.label}}:</label>
                     {{form.total}}
@@ -396,3 +401,57 @@ Bienes | Servicios
         </div><br>
 </form>
 {% endblock%}
+
+{% block scriptcode %}
+<!-- Menu Toggle Script -->
+<script>
+
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    
+</script>
+
+<!-- Calcular Total -->
+<script>
+
+    function calculate() {
+
+        var cantidad = document.getElementById('cantidad_bienes').value; 
+        var precio = document.getElementById('precio_unitario').value;
+        var result = document.getElementById('total');
+        var presupuesto = document.getElementById('presupuesto');
+        var myResult = cantidad * precio;
+            document.getElementById('total').value = myResult;
+            document.getElementById('presupuesto').value = myResult;
+
+    }
+</script>
+
+<!-- Calcular de acuerdo tipo recurso -->
+<script>
+
+    function division(){
+
+        var tipo_recurso = document.getElementById('total').value;
+        var resultado = tipo_recurso / 2;
+            document.getElementById('recurso_fiscal').value = resultado;
+            document.getElementById('recurso_federal').value = resultado;
+
+    }
+
+</script>
+
+<script>
+
+    function llenado(){
+
+        var ingresos = document.getElementById('total').value;
+            document.getElementById('ingresos_propios').value = ingresos;
+
+    }
+
+</script>
+
+{% endblock %}

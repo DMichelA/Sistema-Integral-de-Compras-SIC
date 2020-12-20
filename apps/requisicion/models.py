@@ -49,7 +49,7 @@ class Requisicion(models.Model):
     proyecto = models.CharField(max_length=60, choices=proyectos)
     nombre_lider = models.CharField(max_length=60)
     justificacion = models.TextField(null=False, blank=True) 
-    # bien_servicio = models.ForeignKey(Bienes, null=False, blank=False, on_delete=models.CASCADE)
+    bien_servicio = models.ManyToManyField(Bienes, blank=False)
     autorizacion_totalgasto = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     max_autorizadoFE = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     max_autorizadoES = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
@@ -62,3 +62,4 @@ class Requisicion(models.Model):
     firma_encargadafinanzas = models.CharField(max_length=60, null=False, blank=True)
     firma_rector = models.CharField(max_length=60, null=False, blank=True, default='Mtro. José Antonio Zamora Guido')
     firmas_conformidad = models.CharField(max_length=60, null=False, blank=True)
+

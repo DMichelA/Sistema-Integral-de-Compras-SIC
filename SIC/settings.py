@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'apps.login.middleware.SocialAuthExceptionMiddleware', # Atrapar errores
+    # 'apps.login.middleware.SocialAuthExceptionMiddleware', # Atrapar errores
 ]
 
 ROOT_URLCONF = 'SIC.urls'
