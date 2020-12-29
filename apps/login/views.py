@@ -44,25 +44,25 @@ def logout(request):
     return redirect('login')
 '''
 
-
+''''
 def login_success(request):
     if request.user.is_staff:
         # user es admin
         return redirect('administrador_index')
     else:
         return redirect('usuario_index')
-
+'''
 
 
 # Redireccion tomando en cuenta rol
-'''
+
 def login_success(request):
-    if request.user.rol == 'Administrador':
+    if request.user.rol == 'admin':
         # user es admin
         return redirect('administrador_index')
     else:
         return redirect('usuario_index')
-'''
+
 
 def accounterror(request):
     return redirect('login')

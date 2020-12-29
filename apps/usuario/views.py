@@ -10,8 +10,10 @@ def bienes_insert(request):
     if request.method == 'POST':
         form = BienesForm(request.POST)
         if form.is_valid():
+            form.instance.nombre_responsable = request.user
+            form.instance.area_solicitante = request.user.area
             form.save()
-        return redirect('listar_bienes') #Redirecciona a la pagina list
+        return redirect('listar_bienes') #Redirecciona a la pagina usuario/index
     else:
         form = BienesForm()
     return render(request, 'usuario/insert.html', {'form':form})

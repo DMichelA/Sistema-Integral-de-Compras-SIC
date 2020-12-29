@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 
 from apps.usuario.forms import BienesForm
 from apps.usuario.models import Bienes
+from apps.login.models import User
 from django.db.models import Q
 
 # Create your views here.
@@ -65,3 +67,36 @@ def eliminar_bienes(request, id_bien):
         bien.delete()
         return redirect('listado_bienes')
     return render(request, 'administrador/eliminacion.html', {'form':form})
+
+
+def activar_permisos(request):
+    usuario = User.objects.all()
+    contexto = {'usuarios':usuario}
+    return render(request, 'administrador/permisos.html', contexto)
+
+
+def actualizar_permiso(request):
+    id = request.POST['id']
+    activar = request.POST['activar']
+    print(activar)
+    print(id)
+    if activar == 'False':
+        obj = User.objects.get(id=id)
+        print(obj)
+        save = False
+        obj.is_staff = True
+        obj.save()
+        save = True
+        if save:
+            print('Actualizado')
+            return redirect('/administrador/permisos/')
+    else:
+        obj = User.objects.get(id=id)
+        print(obj)
+        save = False
+        obj.is_staff = False
+        obj.save()
+        save =  True
+        if save:
+            print('Actualizado')
+            return redirect('/administrador/permisos/')

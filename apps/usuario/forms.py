@@ -15,8 +15,8 @@ class BienesForm(forms.ModelForm):
             'proyecto_poa',
             'actividad_poa',
             'entregable_poa',
-            'nombre_responsable',
-            'area_solicitante',
+            # 'nombre_responsable',
+            # 'area_solicitante',
             'descrip_partida',
             'codigo_partida',
             'codigo_pestatal',
@@ -59,8 +59,8 @@ class BienesForm(forms.ModelForm):
             'proyecto_poa': 'Proyecto',
             'actividad_poa': 'Actividad',
             'entregable_poa': 'Entregable',
-            'nombre_responsable': 'Nombre Solicitante' ,
-            'area_solicitante': 'Área Solicitante',
+            # 'nombre_responsable': 'Nombre Solicitante' ,
+            # 'area_solicitante': 'Área Solicitante',
             'descrip_partida': 'Descripción de la partida',
             'codigo_partida': 'Partida',
             'codigo_pestatal': 'Partida Estatal',
@@ -103,8 +103,8 @@ class BienesForm(forms.ModelForm):
             'proyecto_poa': forms.Select(attrs={'class': 'form-control'}),
             'actividad_poa': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Escribe una actividad'}),
             'entregable_poa': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Escribe un entregable'}),
-            'nombre_responsable': forms.Select(attrs={'class': 'form-control'}),
-            'area_solicitante': forms.Select(attrs={'class': 'form-control'}),
+            # 'nombre_responsable': forms.Select(attrs={'class': 'form-control'}),
+            # 'area_solicitante': forms.Select(attrs={'class': 'form-control'}),
             'descrip_partida': forms.Select(attrs={'class': 'form-control'}),
             'codigo_partida': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Introduce el código de la partida seleccionada'}),
             'codigo_pestatal': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Introduce el código de la partida estatal'}),
@@ -143,4 +143,3 @@ class BienesForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BienesForm, self).__init__(*args, **kwargs)
         self.fields['descrip_partida'].empty_label ='Selecccionar...'
-        self.fields['nombre_responsable'].empty_label = 'Seleccionar...'
