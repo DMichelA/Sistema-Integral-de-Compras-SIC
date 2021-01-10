@@ -70,7 +70,7 @@ def eliminar_bienes(request, id_bien):
 
 
 def activar_permisos(request):
-    usuario = User.objects.all()
+    usuario = User.objects.filter(rol='normal')
     contexto = {'usuarios':usuario}
     return render(request, 'administrador/permisos.html', contexto)
 

@@ -34,8 +34,6 @@ proyectos = [
 
 
 class Requisicion(models.Model):
-    pagina = models.IntegerField(default=1)
-    de = models.IntegerField(default=1)
     fecha_elaboracion = models.DateField()
     periodo = models.CharField(max_length=60)
     folio = models.IntegerField()
@@ -48,10 +46,9 @@ class Requisicion(models.Model):
     )
     proyecto = models.CharField(max_length=60, choices=proyectos)
     nombre_lider = models.CharField(max_length=60)
-    justificacion = models.TextField(null=False, blank=True) 
+    justificacion = models.TextField(null=False, blank=True)
     bien_servicio = models.ManyToManyField(Bienes, blank=False)
-    
-    autorizacion_totalgasto = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
+    autorizacion_totalgasto = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, default=0)
     max_autorizadoFE = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     max_autorizadoES = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     max_autorizadoIP = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)

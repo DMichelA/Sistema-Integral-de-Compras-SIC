@@ -91,208 +91,224 @@ Requisicion
 
 {% block content %}
 
-
-
 <form method="POST">
     {% csrf_token %}
     <br>
-    <table class="table table-bordered table table-sm">
-        <thead>
-            <th>Encabezado General</th>
-            <th colspan="4">A.Nombre del formato:</th>
-        </thead>
-        <thead class="text-center">
-            <th><img src="{% static 'img/sicutec.png' %}" height="50px" width="200px"></th>
-            <th colspan="4" style="font-size:29px;">REQUISICIÓN DE BIENES Y SERVICIOS</th>
-        </thead>
-        <thead>
-            <th WIDTH="100">F-22-01-R1;210817</th>
-            <th colspan="2">B. Código/Revisión; Fecha:</th>
-            <th colspan="3">F-16-09-R5;270319</th>
-        </thead>
-        <tbody>
-            <th>Datos para los Registros (Evidencia):</th>
-            <th colspan="1" WIDTH="50">C. Página</th>
-            <td WIDTH="60">{{form.pagina}}</td>
-            <th colspan="1" WIDTH="70">de</th>
-            <td WIDTH="50">{{form.de}}</td>
-        </tbody>
-        <tbody>
-            <th>D. Fecha de elaboración:</th>
-            <td WIDTH="50" class="text-center">{{form.fecha_elaboracion}}</td>
-            <th>E. Periodo al que se aplica:</th>
-            <td colspan="2" class="text-center;">{{form.periodo}}</td>
-        </tbody>
-        <tr>
-            <td style="border: 1 ;" colspan="5" HEIGHT="20"></td>
-        </tr>
-        <tbody>
-            <th colspan="3" style="font-size:larger;" class="font-weight-bold text-center">RECURSOS MATERIALES Y SERVICIOS GENERALES.</th>
-            <th>1. Folio:</th>
-            <td colspan="1">{{form.folio}}</td>
-        </tbody>
-        <tr>
-            <th>2. Fecha que se requiere el bien o servicio: (dd/mm/aaaa)</th>
-            <td>{{form.fecha_requerida}}</td>
-            <td>
-                <table WIDTH=100%>
-                    <th>3. Núm. de contrato:</th>
-                    <td class="text-center">{{form.num_contrato}}</td>
-                </table>
-            </td>
-            <td>
-                <table WIDTH=100% HEIGHT="100">
-                    <th class="text-center">4. Prioridad:</th>
-                </table>
-            </td>
-            <td>
-            {{form.prioridad}}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table WIDTH=100%>
-                    <tr>6. Proyecto:</tr>
-                    <td class="text-center">{{form.proyecto}}</td>
-                </table>
-            </td>
-            <td colspan="4">
-                <table WIDTH=100%>
-                    <th>7. Nombre y Firma del líder del proyecto:</th>
-                    <tr>
-                        <td class="text-center">{{form.nombre_lider}}</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5" HEIGHT="10"></td>
-        </tr>
-        <tr>
-            <th class="text-center" colspan="5">8. JUSTIFICACIÓN:</th>
-        </tr>
-                <tr>
-                    <td colspan="5" HEIGHT="60">{{form.justificacion}}</td>
-                </tr>
-                <tr>
-                    <td colspan="5" HEIGHT="10"></td>
-                </tr>
-        <tr HEIGHT="100">
-            <td colspan="5">
-                <table WIDTH=100% HEIGHT="20" style="margin: 0 auto;">
-                    <thead>
-                        <th>9. Clave (Rec. Mat.)</th>
-                        <th>10. Partida (Progr. Y Pres.)</th>
-                        <th>11. Cantidad</th>
-                        <th>12. Unidad de Medida</td>
-                        <th>13. Concepto</th>
-                        <th>14. Especificaciones Técnicas</th>
-                        <th>15. Costo Unitario Aproximado</th>
-                        <th>16. Subtotal</th>
-                    </thead>
-                    <tbody id="bienes">
-                        <button type="button" class="btn btn-success mr-2" onclick="add()">Agregar</button>
-                        <button type="button" class="btn btn-danger" onclick="eliminar()" id="elim" style="display: none;">eliminar</button>
-                    </tbody>
-                    <!--Traer Bienes de BD-->
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" WIDTH=50%>
-                <table WIDTH=100% HEIGHT="20" style="margin: 0 auto;">
-                    <thead>
-                        <th colspan="4" class="text-center">AUTORIZACIÓN DE PROGRAMACIÓN Y PRESUPUESTO</th>
-                    </thead>
-                    <thead>
-                        <th>17. Total del Gasto:</th>
-                        <th>18. Máximo Autorizado:</th>
-                        <th>19. Proyecto:</th>
-                        <th>20. Fuente de financiamiento:</th>
-                    </thead>
-                    <tr HEIGHT="20">
-                        <td rowspan="3">{{form.autorizacion_totalgasto}}</td>
-                        <td>{{form.max_autorizadoFE}}</td>
-                        <td>{{form.presupuesto_proyectoFE}}</td>
-                        <td class="text-center font-weight-bold">Federal</td>
-                    </tr>
-                    <tr HEIGHT="20">
-                        <td>{{form.max_autorizadoES}}</td>
-                        <td>{{form.presupuesto_proyectoES}}</td>
-                        <td class="text-center font-weight-bold">Estatal</td>
-                    </tr>
-                    <tr HEIGHT="20">
-                        <td>{{form.max_autorizadoIP}}</td>
-                        <td>{{form.presupuesto_proyectoIP}}</td>
-                        <td class="text-center font-weight-bold">IP</td>
-                    </tr>
-                    <tr>
-                        <th class="text-center">21. FIRMA DE AUTORIZACIÓN:</th>
-                        <td colspan="4">{{form.firma_autorizacion}}</td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
-                    <tr>
-                        <th class="text-center">22. OBSERVACIONES:</th>
-                    </tr>
-                    <tr>
-                        <td HEIGHT="150">{{form.observaciones}}</td>
-                    </tr>
-                </table>
-            </td>
+    <div class="table-responsive">
+        <table class="table table-bordered table table-sm">
+            <thead>
+                <th>Encabezado General</th>
+                <th colspan="4">A.Nombre del formato:</th>
+            </thead>
+            <thead class="text-center">
+                <th><img src="{% static 'img/sicutec.png' %}" height="50px" width="200px"></th>
+                <th colspan="4" style="font-size:29px;">REQUISICIÓN DE BIENES Y SERVICIOS</th>
+            </thead>
+            <thead>
+                <th WIDTH="100">F-22-01-R1;210817</th>
+                <th colspan="2">B. Código/Revisión; Fecha:</th>
+                <th colspan="3">F-16-09-R5;270319</th>
+            </thead>
+            <tbody>
+                <th>Datos para los Registros (Evidencia):</th>
+                <th colspan="1">C. Página</th>
+                <td>1</td>
+                <th colspan="1">De</th>
+                <td>1</td>
+            </tbody>
+            <tbody>
+                <th>D. Fecha de elaboración:</th>
+                <td class="text-center">{{form.fecha_elaboracion}}</td>
+                <th>E. Periodo al que se aplica:</th>
+                <td colspan="2" class="text-center;">{{form.periodo}}</td>
+            </tbody>
             <tr>
+                <td style="border: 1 ;" colspan="5" HEIGHT="20"></td>
+            </tr>
+            <tbody>
+                <th colspan="3" style="font-size:larger;" class="font-weight-bold text-center">RECURSOS MATERIALES Y SERVICIOS GENERALES.</th>
+                <th>1. Folio:</th>
+                <td colspan="1">{{form.folio}}</td>
+            </tbody>
+            <tr>
+                <th>2. Fecha que se requiere el bien o servicio: (dd/mm/aaaa)</th>
+                <td>{{form.fecha_requerida}}</td>
+                <td>
+                    <table WIDTH=100%>
+                        <th>3. Núm. de contrato:</th>
+                        <td class="text-center">{{form.num_contrato}}</td>
+                    </table>
+                </td>
+                <td>
+                    <table WIDTH=100% HEIGHT="100">
+                        <th class="text-center">4. Prioridad:</th>
+                    </table>
+                </td>
+                <td>
+                {{form.prioridad}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table WIDTH=100%>
+                        <tr>6. Proyecto:</tr>
+                        <td class="text-center">{{form.proyecto}}</td>
+                    </table>
+                </td>
                 <td colspan="4">
-                    <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
+                    <table WIDTH=100%>
+                        <th>7. Nombre y Firma del líder del proyecto:</th>
                         <tr>
-                            <th class="text-center">23. NOMBRE Y FIRMA DE ENCARGADA DE ADMINISTRACIÓN Y FINANZAS:</th>
-                        </tr>
-                        <tr>
-                            <td HEIGHT="50">{{form.firma_encargadafinanzas}}</td>
+                            <td class="text-center">{{form.nombre_lider}}</td>
                         </tr>
                     </table>
                 </td>
-            <td>
-                <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
-                    <thead>
-                        <th class="text-center">24. NOMBRE Y FIRMA DEL RECTOR:</th>
-                    </thead>
+            </tr>
+            <tr>
+                <td colspan="5" HEIGHT="10"></td>
+            </tr>
+            <tr>
+                <th class="text-center" colspan="5">8. JUSTIFICACIÓN:</th>
+            </tr>
                     <tr>
-                        <td HEIGHT="50">{{form.firma_rector}}</td>
+                        <td colspan="5" HEIGHT="60">{{form.justificacion}}</td>
                     </tr>
-                </table>
-            </td>
-            <thead>
-                <th class="text-center" colspan="2">25.NOMBRE Y FIRMAS DE CONFORMIDAD Y FECHA</th>
-                <td colspan="4">{{form.firmas_conformidad}}</td>
-            </thead>
-            <thead>
-                <th colspan="6" class="text-center">NOTA: </th>
-            </thead>
-            <tbody>
-                <td colspan="6" style="text-align: center;" HEIGHT="50">
-                    En caso de ser monto mayores de 300 veces la UMA se deberá de verificar el procedimiento de
-                    adjudicación: DIRECTA, INVITACIÓN O LICITACIÓN,
-                    dependiendo de ello será el tiempo de entrega, conforme lo estipula la Ley en la materia, y
-                    el área usuario deberá requisitar el anexo técnico.
+                    <tr>
+                        <td colspan="5" HEIGHT="10"></td>
+                    </tr>
+            <tr HEIGHT="100">
+                <td colspan="5">
+                    <table WIDTH=100% HEIGHT="20" style="margin: 0 auto;">
+                        <thead>
+                            <th>9. Clave (Rec. Mat.)</th>
+                            <th>10. Partida (Progr. Y Pres.)</th>
+                            <th>11. Cantidad</th>
+                            <th>12. Unidad de Medida</td>
+                            <th>13. Concepto</th>
+                            <th>14. Especificaciones Técnicas</th>
+                            <th>15. Costo Unitario Aproximado</th>
+                            <th>16. Subtotal</th>
+                        </thead>
+                        <tbody id="bienes">
+                            <button type="button" class="btn btn-success mr-2" id="agregar" onclick="add()">Agregar</button>
+                            <button type="button" class="btn btn-danger mr-2" onclick="eliminar()" id="elim" style="display: none;">eliminar</button>
+                            <button type="button" class="btn btn-dark mr-2" id="listo" onclick="activar()">Listo</button>
+                        </tbody>
+                        <!--Traer Bienes de BD-->
+                    </table>
                 </td>
-            </tbody>
-    </table><br>
+            </tr>
+            <tr>
+                <td colspan="4" WIDTH=50%>
+                    <table WIDTH=100% HEIGHT="20" style="margin: 0 auto;">
+                        <thead>
+                            <th colspan="4" class="text-center">AUTORIZACIÓN DE PROGRAMACIÓN Y PRESUPUESTO</th>
+                        </thead>
+                        <thead>
+                            <th>17. Total del Gasto:</th>
+                            <th>18. Máximo Autorizado:</th>
+                            <th>19. Proyecto:</th>
+                            <th>20. Fuente de financiamiento:</th>
+                        </thead>
+                        <tr HEIGHT="20">
+                            <td rowspan="3">{{form.autorizacion_totalgasto}}</td>
+                            <td>{{form.max_autorizadoFE}}</td>
+                            <td>{{form.presupuesto_proyectoFE}}</td>
+                            <td class="text-center font-weight-bold">Federal</td>
+                        </tr>
+                        <tr HEIGHT="20">
+                            <td>{{form.max_autorizadoES}}</td>
+                            <td>{{form.presupuesto_proyectoES}}</td>
+                            <td class="text-center font-weight-bold">Estatal</td>
+                        </tr>
+                        <tr HEIGHT="20">
+                            <td>{{form.max_autorizadoIP}}</td>
+                            <td>{{form.presupuesto_proyectoIP}}</td>
+                            <td class="text-center font-weight-bold">IP</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">21. FIRMA DE AUTORIZACIÓN:</th>
+                            <td colspan="4">{{form.firma_autorizacion}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
+                        <tr>
+                            <th class="text-center">22. OBSERVACIONES:</th>
+                        </tr>
+                        <tr>
+                            <td HEIGHT="150">{{form.observaciones}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <tr>
+                    <td colspan="4">
+                        <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
+                            <tr>
+                                <th class="text-center">23. NOMBRE Y FIRMA DE ENCARGADA DE ADMINISTRACIÓN Y FINANZAS:</th>
+                            </tr>
+                            <tr>
+                                <td HEIGHT="50">{{form.firma_encargadafinanzas}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                <td>
+                    <table WIDTH=100% HEIGHT="40" style="margin: 0 auto;">
+                        <thead>
+                            <th class="text-center">24. NOMBRE Y FIRMA DEL RECTOR:</th>
+                        </thead>
+                        <tr>
+                            <td HEIGHT="50">{{form.firma_rector}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <thead>
+                    <th class="text-center" colspan="2">25.NOMBRE Y FIRMAS DE CONFORMIDAD Y FECHA</th>
+                    <td colspan="4">{{form.firmas_conformidad}}</td>
+                </thead>
+                <thead>
+                    <th colspan="6" class="text-center">NOTA: </th>
+                </thead>
+                <tbody>
+                    <td colspan="6" style="text-align: center;" HEIGHT="50">
+                        En caso de ser monto mayores de 300 veces la UMA se deberá de verificar el procedimiento de
+                        adjudicación: DIRECTA, INVITACIÓN O LICITACIÓN,
+                        dependiendo de ello será el tiempo de entrega, conforme lo estipula la Ley en la materia, y
+                        el área usuario deberá requisitar el anexo técnico.
+                    </td>
+                </tbody>
+        </table><br>
+    </div>
 
     <div class="row">
         <div class="col text-center">
-            <button class="btn btn-primary" type="submit">Guardar</button>
+            <button class="btn btn-primary" type= "submit" onclick="prueba()">Guardar</button>
         </div>
+        <!--
+        <div class="col text-center">
+            <button class="btn btn-primary" type="submit" onclick="prueba()">Prueba</button>
+        </div>
+        -->
     </div><br>
 </form>
 
-    {% if bienes %}
-    {% for bien in bienes %}
-        <p>{{ bien.nombre_responsable }}</p>
-    {% endfor %}
-    <h1>No hay registros de bienes</h1>
-    {% endif %}
+    <div style="display: none;">
+        {% if bienes %}
+        {% for bien in bienes %}
+            <p id="{{bien.id}}" class="validados">{{ bien.id }}</p>
+            <p id="{{bien.codigo_partida}}" class="validados">{{ bien.codigo_partida }}</p>
+            <p id="{{bien.cantidad_bienes}}" class="validados">{{ bien.cantidad_bienes }}</p>
+            <p id="{{bien.unidad_medida}}" class="validados">{{ bien.unidad_medida }}</p>
+            <p id="{{bien.descrip_general_bien}}" class="validados">{{ bien.descrip_general_bien }}</p>
+            <p id="{{bien.espeficaciones_tecnicas}}" class="validados">{{ bien.espeficaciones_tecnicas }}</p>
+            <p id="{{bien.precio_unitario}}" class="validados">{{ bien.precio_unitario }}</p>
+            <p id="{{bien.total}}" class="validados">{{ bien.total }}</p>
+        {% endfor %}
+        {% else %}
+            <h1>No hay registros de bienes</h1>
+        {% endif %}
+    </div>
 
 {% endblock %}
 
@@ -310,13 +326,29 @@ $("#menu-toggle").click(function(e) {
 <script>
     var nod=0;
     function add(){
-        console.log(nod)
+        console.log(nod);
         document.getElementById("elim").style.display="inline";
-        
+        document.getElementById("listo").style.display="inline";
         let container=document.getElementById("bienes");
         let insercion=`
-        <tr id="fila${nod}">
-            <td ><input type="number" class="form-control" id="nod${nod}" oninput="cambiar('nod${nod}')"></input></td>
+        <tr id="fila${nod}">`;
+            //insercion+=`<td><select class="form-control" id="nod${nod}" name="bienes" onchange="cambiar('nod${nod}')">`;
+            insercion+=`<td>{{form.bien_servicio}}`;
+            /*
+            for (let i=0; i<arreglo.length; i++){
+                if (i==0){
+                    insercion+=`
+                    <option value="null">Seleccionar...</option>
+                    <option>${arreglo[i][0]}</option>`
+                }
+                else{
+                    insercion+=`
+                    <option>${arreglo[i][0]}</option>`
+                }
+            }
+            */
+            insercion+=
+            ` </select></td>
             <td id="partida${nod}"></td>
             <td id="cantidad${nod}"></td>
             <td id="unidad_medida${nod}"></td>
@@ -327,14 +359,13 @@ $("#menu-toggle").click(function(e) {
         </tr>
         `
         container.insertAdjacentHTML("beforeend",insercion)
-        
-        
         nod=nod+1;
     }
 
     function eliminar(){
         if(nod==1){
             document.getElementById("elim").style.display="none";
+            document.getElementById("listo").style.display="none";
         }
         nod-=1;
         let container=document.getElementById("bienes");
@@ -345,8 +376,85 @@ $("#menu-toggle").click(function(e) {
     }
     function cambiar(id){
         let ids=document.getElementById(`${id}`).value;
-        console.log(ids)
+        console.log(ids);
+        console.log(id);
+        let bien_num = String(id).substring(3);
+        for (let i=0; i<arreglo.length; i++){
+            if(arreglo[i][0]==ids){
+                document.getElementById(`partida${bien_num}`).innerText = arreglo[i][1]
+                document.getElementById(`cantidad${bien_num}`).innerText = arreglo[i][2]
+                document.getElementById(`unidad_medida${bien_num}`).innerText = arreglo[i][3]
+                document.getElementById(`concepto${bien_num}`).innerText = arreglo[i][4]
+                document.getElementById(`especificaciones${bien_num}`).innerText = arreglo[i][5]
+                document.getElementById(`costo_aprox${bien_num}`).innerText = arreglo[i][6]
+                document.getElementById(`subtotal${bien_num}`).innerText = arreglo[i][7]
+                break
+            }
+            else{
+                document.getElementById(`partida${bien_num}`).innerText = ''
+                document.getElementById(`cantidad${bien_num}`).innerText = ''
+                document.getElementById(`unidad_medida${bien_num}`).innerText = ''
+                document.getElementById(`concepto${bien_num}`).innerText = ''
+                document.getElementById(`especificaciones${bien_num}`).innerText = ''
+                document.getElementById(`costo_aprox${bien_num}`).innerText = ''
+                document.getElementById(`subtotal${bien_num}`).innerText = ''
+            }
+        }
     }
-    
+
+    var arreglo = []
+    function llenado(){
+        document.getElementById("listo").style.display="none";
+        let bienes = document.getElementsByClassName("validados");
+        let arreglo2 = []
+        for (let i=0; i<bienes.length; i+=8){
+            for (let a=i; a<i+8; a++){
+                console.log(bienes[a].innerText);
+                arreglo2.push(bienes[a].innerText);
+            }
+            arreglo.push(arreglo2);
+            arreglo2 = []
+        }
+        console.log(arreglo);
+    }
+
+    window.onload=function(){
+        llenado();
+    }
+
+    function activar(){
+        let estado = document.getElementById("agregar").disabled;
+        let conteo;
+        if (estado==false){
+            conteo = document.getElementById("bienes").rows.length;
+            let suma = 0;
+            for (let i=0; i<conteo; i++){
+                console.log(document.getElementById("bienes").rows[0].id);
+                let cl = document.getElementById("bienes").rows[i].id;
+                cl = parseInt(cl.substring(4))
+                suma += parseFloat(document.getElementById(`subtotal${i}`).innerText);
+                document.getElementById(`nod${i}`).disabled = true;
+            }
+            console.log(suma);
+            console.log(document.getElementById("total_gasto"))
+            document.getElementById("total_gasto").value = suma;
+            document.getElementById("agregar").disabled = true;
+            document.getElementById("elim").disabled = true;
+        }
+        else{
+            conteo = document.getElementById("bienes").rows.length;
+            for (let i=0; i<conteo; i++){
+                console.log(document.getElementById("bienes").rows[0].id);
+                let cl = document.getElementById("bienes").rows[i].id;
+                cl = parseInt(cl.substring(4))
+                document.getElementById(`nod${i}`).disabled = false;
+            }
+            document.getElementById("total_gasto").value = 0;
+            document.getElementById("agregar").disabled = false;
+            document.getElementById("elim").disabled = false;
+        }
+    }
+
+
 </script>
 {% endblock %}

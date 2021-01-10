@@ -111,7 +111,7 @@ Permisos
                 <td>{{ usuario.id }}</td>
                 <td>{{ usuario.name }}</td>
                 <td>{{ usuario.area }}</td>
-                <td hidden class="asignacion">{{ usuario.is_staff }}</td>
+                <td hidden class="asignacion">{{usuario.id}}_{{ usuario.is_staff }}</td>
                 <td><input type="checkbox" id={{ usuario.id }} onchange="update(`{{ usuario.id }}`, `{{ usuario.is_staff }}`)"></td>
               </tr>
             {% endfor %}
@@ -169,18 +169,27 @@ Permisos
       console.log(document.getElementById('bod'))
       let contador = document.getElementsByClassName('asignacion').length;
       console.log(contador);
-      for(let i=1; i<=contador; i++){
-        console.log(document.getElementsByClassName('asignacion')[i-1].innerText);
-        let resultados = document.getElementsByClassName('asignacion')[i-1].innerText;
+      for(let i=0; i<contador; i++){
+        console.log(document.getElementsByClassName('asignacion')[i]);
+        let resultados = document.getElementsByClassName('asignacion')[i].innerText;
+        console.log(resultados.indexOf('_'));
+        let posicion = parseInt(resultados.indexOf('_'))+1;
+        let clave = parseInt(resultados.substring(0,posicion-1));
+        console.log(clave)
+        resultados = resultados.substring(posicion);
         if (resultados == 'True'){
           console.log('bandera1')
-          document.getElementById(`${i}`).checked = true;
+          document.getElementById(`${clave}`).checked = true;
         }
         else{
           console.log('bandera2')
-          document.getElementById(`${i}`).checked = false;
+          document.getElementById(`${clave}`).checked = false;
         }
       }
+    }
+
+    window.onload=function(){
+      cargar_pagina();
     }
   </script>
 
