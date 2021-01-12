@@ -1,11 +1,11 @@
 {% extends 'base/base.html' %}
 
-{% block title %}
-Bienes/Servicios | Verificados
-{% endblock %}
-
 {% load static %}
 
+{% block title %}
+Requisiciones
+{% endblock %}
+ 
 {% block menu %}
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
@@ -88,146 +88,44 @@ Bienes/Servicios | Verificados
 
 {% block content %}
 <h1 class="text-center">
-    BIENES/SERVICIOS VERIFICADOS
+    REQUISICIONES
 </h1>
-
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline" method="POST">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" name="buscar" id="buscar" aria-label="Search" value="{{ request.POST.buscar }}">
-    <button class="btn btn-outline-success mr-2 my-2 my-sm-0" type="submit">Buscar</button>
-    <button class="btn btn-outline-danger my-2 my-sm-0" onclick="document.getElementById('buscar').value = ''" type="submit">Cancelar</button>
-  </form>
-</nav>
-
-
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm"> <!--puede ser table-striped-->
-              <thead class="thead-dark">
-                  <tr>
-                    <th></th>
-                    <th class="text-center" colspan="2">Alineación PIDE</th>
-                    <th class="text-center" colspan="5">Alineación al POA</th>
-                    <th class="text-center" colspan="2">Información Solicitante</th>
-                    <th class="text-center" colspan="12">Bienes y Servicios</th>
-                    <th class="text-center" colspan="4">Fuente y total anual</th>
-                    <th class="text-center" colspan="4">Modalidad de adjudicación</th>
-                    <th class="text-center" colspan="12">Calendarizado Anual</th>
-                    <th class="text-center" colspan="2">Información Bien/Servicio</th>
-                  </tr>
-              </thead>
-              <thead class="thead-light">
+            <thead class="thead-dark">
                 <tr>
-                    <th class="text-center">Validación</th>
-                    <th class="text-center">Eje</th>
-                    <th class="text-center">Estrategia</th>
-                    <th class="text-center">Programa</th>
-                    <th class="text-center">Componente</th>
-                    <th class="text-center">Proyecto</th>
-                    <th class="text-center">Actividad</th>
-                    <th class="text-center">Entregable</th>
-                    <th class="text-center">Solicitante</th>
-                    <th class="text-center">Área Solicitante</th>
                     <th class="text-center">ID</th>
-                    <th class="text-center">Descripción Partida</th>
-                    <th class="text-center">Partida</th>
-                    <th class="text-center">Partida Estatal</th>
-                    <th class="text-center">Descripción general</th>
-                    <th class="text-center">Especificaciones Tecnicas</th>
-                    <th class="text-center">Capítulo</th>
-                    <th class="text-center">Bien/Servicio</th>
-                    <th class="text-center">Unidad de Medida</th>
-                    <th class="text-center">Cantidad Bienes</th>
-                    <th class="text-center">Precio Unitario</th>
-                    <th class="text-center">Total</th>
-                    <th class="text-center">Ingresos Propios</th>
-                    <th class="text-center">Recurso Fiscal</th>
-                    <th class="text-center">Recurso Federal</th>
-                    <th class="text-center">Presupuesto Total Anual</th>
-                    <th class="text-center">Licitación Publica</th>
-                    <th class="text-center">Invitación a cuando menos tres personas</th>
-                    <th class="text-center">Adjudicación Directa</th>
-                    <th class="text-center">Partidas PAAAyS</th>
-                    <th class="text-center">Enero</th>
-                    <th class="text-center">Febrero</th>
-                    <th class="text-center">Marzo</th>
-                    <th class="text-center">Abril</th>
-                    <th class="text-center">Mayo</th>
-                    <th class="text-center">Junio</th>
-                    <th class="text-center">Julio</th>
-                    <th class="text-center">Agosto</th>
-                    <th class="text-center">Septiembre</th>
-                    <th class="text-center">Octubre</th>
-                    <th class="text-center">Noviembre</th>
-                    <th class="text-center">Diciembre</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Fecha Solicitud</th>
+                    <th class="text-center">Folio</th>
+                    <th class="text-center">Solicitante</th>
+                    <th class="text-center">Area Solicitante</th>
+                    <th class="text-center">Fecha elaboración</th>
+                    <th class="text-center">Fecha requerida</th>
+                    <th class="text-center">Prioridad</th>
+                    <th class="text-center">Número Contrato</th>
+                    <th class="text-center">Proyecto</th>
+                    <th class="text-center">Nombre Lider Proyecto</th>
+                    <th class="text-center">Gasto Total Autorizado</th>
                 </tr>
             </thead>
             <tbody>
-                {% if bienes %}
-                {% for bien in bienes %}
+                {% if requisiciones %}
+                {% for requisicion in requisiciones %}
                 <tr>
-                    <td>
-                        {% if bien.validacion == 'No validado' %}
-                          <p class="font-weight-bold text-danger"><svg class="bi bi-x text-danger" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>{{ bien.validacion }}</p>
-                        {% else %} 
-                          <p class="font-weight-bold text-success"><svg class="bi bi-check text-success" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
-                            </svg>{{ bien.validacion }}</p>
-                        {% endif %}
-                        </div>
-                    </td>
-                    <td>{{ bien.eje_pide }}</td>
-                    <td>{{ bien.estrategia_pide }}</td>
-                    <td>{{ bien.programa_poa }}</td>
-                    <td>{{ bien.componente_poa }}</td>
-                    <td>{{ bien.proyecto_poa }}</td>
-                    <td>{{ bien.actividad_poa }}</td>
-                    <td>{{ bien.entregable_poa }}</td>
-                    <td>{{ bien.nombre_responsable }}</td>
-                    <td>{{ bien.area_solicitante }}</td>
-                    <td>{{ bien.id }}</td>
-                    <td>{{ bien.descrip_partida }}</td>
-                    <td>{{ bien.codigo_partida }}</td>
-                    <td>{{ bien.codigo_pestatal }}</td>
-                    <td>{{ bien.descrip_general_bien }}</td>
-                    <td>{{ bien.espeficaciones_tecnicas }}</td>
-                    <td>{{ bien.capitulo }}</td>
-                    <td>{{ bien.tipo }}</td>
-                    <td>{{ bien.unidad_medida }}</td>
-                    <td>{{ bien.cantidad_bienes }}</td>
-                    <td>{{ bien.precio_unitario }}</td>
-                    <td>{{ bien.total }}</td>
-                    <td>{{ bien.ingresos_propios }}</td>
-                    <td>{{ bien.recurso_fiscal }}</td>
-                    <td>{{ bien.recurso_federal }}</td>
-                    <td>{{ bien.presupues_total_anual }}</td>
-                    <td>{{ bien.licitacion_publica }}</td>
-                    <td>{{ bien.invitacion_personas }}</td>
-                    <td>{{ bien.adjudicacion_directa }}</td>
-                    <td>{{ bien.partidas_paaays }}</td>
-                    <td>{{ bien.cal_enero }}</td>
-                    <td>{{ bien.cal_febrero }}</td>
-                    <td>{{ bien.cal_marzo }}</td>
-                    <td>{{ bien.cal_abril }}</td>
-                    <td>{{ bien.cal_mayo }}</td>
-                    <td>{{ bien.cal_junio }}</td>
-                    <td>{{ bien.cal_julio }}</td>
-                    <td>{{ bien.cal_agosto }}</td>
-                    <td>{{ bien.cal_septiembre }}</td>
-                    <td>{{ bien.cal_octubre }}</td>
-                    <td>{{ bien.cal_noviembre }}</td>
-                    <td>{{ bien.cal_diciembre }}</td>
-                    <td>{{ bien.status }}</td>
-                    <td>{{ bien.fecha_solicitud }}</td>
+                    <td>{{ requisicion.id }}</td>
+                    <td>{{ requisicion.folio }}</td>
+                    <td>{{ requisicion.nombre_responsable }}</td>
+                    <td>{{ requisicion.area_solicitante }}</td>
+                    <td>{{ requisicion.fecha_elaboracion }}</td>
+                    <td>{{ requisicion.fecha_requerida }}</td>
+                    <td>{{ requisicion.prioridad }}</td>
+                    <td>{{ requisicion.num_contrato }}</td>
+                    <td>{{ requisicion.proyecto }}</td>
+                    <td>{{ requisicion.nombre_lider }}</td>
+                    <td>{{ requisicion.autorizacion_totalgasto }}</td>
                 </tr>
                 {% endfor %}
-                
                 {% else %}
-                <h1>No hay registros de bienes</h1>
+                <h1>No hay registros de requisiciones</h1>
                 {% endif %}
             </tbody>
         </table>

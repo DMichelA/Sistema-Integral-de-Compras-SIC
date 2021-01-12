@@ -1,5 +1,6 @@
 from django.db import models
 from apps.usuario.models import Bienes
+from apps.login.models import User
 
 prioridades = [
     ('', 'Seleccionar...'),
@@ -34,6 +35,8 @@ proyectos = [
 
 
 class Requisicion(models.Model):
+    nombre_responsable = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    area_solicitante = models.CharField(max_length=45)
     fecha_elaboracion = models.DateField()
     periodo = models.CharField(max_length=60)
     folio = models.IntegerField()

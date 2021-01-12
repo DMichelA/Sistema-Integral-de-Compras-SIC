@@ -25,7 +25,7 @@ def envio_datos(request):
     if request.method == 'POST':
         print(request.POST)
         datos = request.POST
-        r = Requisicion(fecha_elaboracion=datos["fecha_requerida"], periodo=datos["periodo"], folio=datos["folio"], fecha_requerida=datos["fecha_requerida"], num_contrato=datos["num_contrato"], prioridad=datos["prioridad"], proyecto=datos["proyecto"], nombre_lider=datos["nombre_lider"], justificacion=datos["justificacion"], autorizacion_totalgasto=datos["autorizacion_totalgasto"], max_autorizadoFE=datos["max_autorizadoFE"], max_autorizadoES=datos["max_autorizadoES"], max_autorizadoIP=datos["max_autorizadoIP"], presupuesto_proyectoFE=datos["presupuesto_proyectoFE"], presupuesto_proyectoES=datos["presupuesto_proyectoES"], presupuesto_proyectoIP=datos["presupuesto_proyectoIP"], firma_autorizacion=datos["firma_autorizacion"], observaciones=datos["observaciones"], firma_encargadafinanzas=datos["firma_encargadafinanzas"], firma_rector=datos["firma_rector"], firmas_conformidad=datos["firmas_conformidad"] )
+        r = Requisicion(nombre_responsable=request.user, area_solicitante = request.user.area, fecha_elaboracion=datos["fecha_requerida"], periodo=datos["periodo"], folio=datos["folio"], fecha_requerida=datos["fecha_requerida"], num_contrato=datos["num_contrato"], prioridad=datos["prioridad"], proyecto=datos["proyecto"], nombre_lider=datos["nombre_lider"], justificacion=datos["justificacion"], autorizacion_totalgasto=datos["autorizacion_totalgasto"], max_autorizadoFE=datos["max_autorizadoFE"], max_autorizadoES=datos["max_autorizadoES"], max_autorizadoIP=datos["max_autorizadoIP"], presupuesto_proyectoFE=datos["presupuesto_proyectoFE"], presupuesto_proyectoES=datos["presupuesto_proyectoES"], presupuesto_proyectoIP=datos["presupuesto_proyectoIP"], firma_autorizacion=datos["firma_autorizacion"], observaciones=datos["observaciones"], firma_encargadafinanzas=datos["firma_encargadafinanzas"], firma_rector=datos["firma_rector"], firmas_conformidad=datos["firmas_conformidad"] )
         r.save()
         return redirect('usuario_index')
 
@@ -33,10 +33,14 @@ def envio_bienes(request):
     requisicion_ids = Requisicion.objects.all().values_list('pk', flat=True)
     print(requisicion_ids)
     longitud = len(requisicion_ids)
-    for i in range (0, longitud):
-        if i == longitud-1:
-            ultimo = (requisicion_ids[i])+1
-            print(ultimo)
+    print(longitud)
+    if longitud == 0:
+        ultimo=1
+    else:
+        for i in range (0, longitud):
+            if i == longitud-1:
+                ultimo = (requisicion_ids[i])+1
+                print(ultimo)
     if request.method == 'POST':
         print(request.POST)
         datos = request.POST
@@ -50,3 +54,12 @@ def envio_bienes(request):
             rb.save()
         return redirect('usuario_index')
 
+def requisiciones_list(request):
+    requisicion = Requisicion.objects.filter(nombre_responsable=request.user).order_by('id')
+    contexto = {'requisiciones':requisicion}
+    return render(request, 'requisicion/list.html', contexto)
+
+def requisiciones_listado_admin(request):
+    requisicion = Requisicion.objects.all().order_by('id')
+    contexto = {'requisiciones':requisicion}
+    return render(request, 'requisicion/list_admin.html', contexto)
