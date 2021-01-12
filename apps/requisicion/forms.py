@@ -18,7 +18,7 @@ class RequisicionForm(forms.ModelForm):
             'proyecto',
             'nombre_lider',
             'justificacion',
-            'bien_servicio',
+            # 'bien_servicio',
             'autorizacion_totalgasto',
             'max_autorizadoFE',
             'max_autorizadoES',
@@ -42,7 +42,7 @@ class RequisicionForm(forms.ModelForm):
             'proyecto' : 'Proyecto',
             'nombre_lider' : 'Lider del Proyecto',
             'justificacion' : 'Justificación',
-            'bien_servicio' : 'Clave',
+            # 'bien_servicio' : 'Clave',
             'autorizacion_totalgasto' : 'Gasto Total',
             'max_autorizadoFE': 'Máximo Autorizado Federal',
             'max_autorizadoES': 'Máximo Autorizado Estatal',
@@ -66,7 +66,7 @@ class RequisicionForm(forms.ModelForm):
             'proyecto': forms.Select(attrs={'class': 'form-control'}),
             'nombre_lider': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escribe el nombre del Lider de proyecto'}),
             'justificacion': forms.Textarea(attrs={'class': 'form-control'}),
-            'bien_servicio': forms.Select(attrs={'class': 'form-control', 'id': 'nod${nod}', 'onchange': "cambiar('nod${nod}')"}),
+            # 'bien_servicio': forms.Select(attrs={'class': 'form-control', 'id': 'nod${nod}', 'onchange': "cambiar('nod${nod}')"}),
             'autorizacion_totalgasto': forms.NumberInput(attrs={'class': 'form-control', 'id': 'total_gasto'}),
             'max_autorizadoFE': forms.NumberInput(attrs={'class': 'form-control'}),
             'max_autorizadoES': forms.NumberInput(attrs={'class': 'form-control'}),
@@ -81,9 +81,10 @@ class RequisicionForm(forms.ModelForm):
             'firmas_conformidad': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-
+    '''
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(RequisicionForm, self).__init__(*args, **kwargs)
         self.fields['bien_servicio'].empty_label ='Selecccionar...'
         self.fields['bien_servicio'].queryset = Bienes.objects.filter(validacion='Validado', nombre_responsable=self.user)
+    '''

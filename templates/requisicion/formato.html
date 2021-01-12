@@ -283,7 +283,7 @@ Requisicion
 
     <div class="row">
         <div class="col text-center">
-            <button class="btn btn-primary" type= "submit" onclick="prueba()">Guardar</button>
+            <button class="btn btn-primary" type= "button" onclick="recopilacion()">Guardar</button>
         </div>
         <!--
         <div class="col text-center">
@@ -332,9 +332,9 @@ $("#menu-toggle").click(function(e) {
         let container=document.getElementById("bienes");
         let insercion=`
         <tr id="fila${nod}">`;
-            //insercion+=`<td><select class="form-control" id="nod${nod}" name="bienes" onchange="cambiar('nod${nod}')">`;
-            insercion+=`<td>{{form.bien_servicio}}`;
-            /*
+            insercion+=`<td><select class="form-control" id="nod${nod}" onchange="cambiar('nod${nod}')">`;
+            //insercion+=`<td>{{form.bien_servicio}}`;
+
             for (let i=0; i<arreglo.length; i++){
                 if (i==0){
                     insercion+=`
@@ -346,7 +346,7 @@ $("#menu-toggle").click(function(e) {
                     <option>${arreglo[i][0]}</option>`
                 }
             }
-            */
+            
             insercion+=
             ` </select></td>
             <td id="partida${nod}"></td>
@@ -455,6 +455,199 @@ $("#menu-toggle").click(function(e) {
         }
     }
 
+    function recopilacion(){
+        let promy = new Promise((resolve, reject)=>{
+            let fecha_elaboracion = document.getElementById("datepicker").value;
+            //console.log(fecha_elaboracion);
+            if(fecha_elaboracion=="" || fecha_elaboracion==null){
+                alert('Completa el campo de la fecha de elaboración');
+                resolve({fecha_elaboracion:0, error:1})
+            }
+            else{
+                resolve({fecha_elaboracion:fecha_elaboracion, error: 0})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let periodo = document.getElementById("id_periodo").value;
+                if(periodo=="" || periodo==null){
+                    alert('Completa el campo de periodo al que aplica');
+                    return({fecha_elaboracion:0, periodo:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:periodo, error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let folio = document.getElementById("id_folio").value;
+                if(folio==null || folio==NaN || folio==""){
+                    alert('Completa el campo folio');
+                    return({fecha_elaboracion:0, periodo:0, folio:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], folio:folio, error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, folio:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let fecha_requerida = document.getElementById("id_fecha_requerida").value;
+                if(fecha_requerida=="" || fecha_requerida==null){
+                    alert('Completa el campo fecha requerida');
+                    return({fecha_elaboracion:0, periodo:0, folio:0, fecha_requerida:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], folio:res["folio"], fecha_requerida:fecha_requerida, error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, folio:0, fecha_requerida:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let num_contrato = document.getElementById("id_num_contrato").value;
+                if(num_contrato==null || num_contrato==NaN || num_contrato==""){
+                    alert('Completa el campo numero de contrato');
+                    return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:num_contrato, error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let prioridad= document.getElementById("id_prioridad").value;
+                if(prioridad=="" || prioridad==null){
+                    alert('Completa el campo numero de prioridad');
+                    return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:res["num_contrato"], prioridad:prioridad, error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let proyecto= document.getElementById("id_proyecto").value;
+                if(proyecto=="" || proyecto==null){
+                    alert('Completa el campo numero de proyecto');
+                    return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:res["num_contrato"], prioridad:res["prioridad"], proyecto:proyecto ,error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let nombre_lider= document.getElementById("id_nombre_lider").value;
+                if(nombre_lider=="" || nombre_lider==null){
+                    alert('Completa el campo de nombre lider');
+                    return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, nombre_lider:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:res["num_contrato"], prioridad:res["prioridad"], proyecto:res["proyecto"], nombre_lider:nombre_lider ,error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, nombre_lider:0, error:1})
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let autorizacion_totalgasto= document.getElementById("total_gasto").value;
+                if(autorizacion_totalgasto==null || autorizacion_totalgasto==NaN || autorizacion_totalgasto==""){
+                    alert('Completa el campo de gasto total');
+                    return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, nombre_lider:0, autorizacion_totalgasto:0, error:1})
+                }
+                else{
+                    return({fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:res["num_contrato"], prioridad:res["prioridad"], proyecto:res["proyecto"], nombre_lider:res["nombre_lider"], autorizacion_totalgasto:autorizacion_totalgasto,error:0})
+                }
+            }
+            else{
+                return({fecha_elaboracion:0, periodo:0, fecha_requerida:0, folio:0, num_contrato:0, prioridad:0, proyecto:0, nombre_lider:0, autorizacion_totalgasto:0, error:1})
+            }
+        }).then(res=>{
+            if(res["error"]==0){
+                if(nod==0){
+                    alert('No se han llenado los bienes y servicios');
+                    return({error:1});
+                }
+                else{
+                    return(res);
+                }
+            }
+            else{
+                return({error:1});
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res["error"]==0){
+                let justificacion = document.getElementById("id_justificacion").value;
+                let max_autorizadoFE = document.getElementById("id_max_autorizadoFE").value;
+                let max_autorizadoES = document.getElementById("id_max_autorizadoES").value;
+                let max_autorizadoIP = document.getElementById("id_max_autorizadoIP").value;
+                let presupuesto_proyectoFE = document.getElementById("id_presupuesto_proyectoFE").value;
+                let presupuesto_proyectoES = document.getElementById("id_presupuesto_proyectoES").value;
+                let presupuesto_proyectoIP = document.getElementById("id_presupuesto_proyectoIP").value;
+                let firma_autorizacion = document.getElementById("id_firma_autorizacion").value;
+                let observaciones = document.getElementById("id_observaciones").value;
+                let firma_encargadafinanzas = document.getElementById("id_firma_encargadafinanzas").value;
+                let firma_rector = document.getElementById("id_firma_rector").value;
+                let firmas_conformidad = document.getElementById("id_firmas_conformidad").value;
+                console.log(nod);
+                let envio = {csrfmiddlewaretoken: '{{ csrf_token }}', fecha_elaboracion:res["fecha_elaboracion"], periodo:res["periodo"], fecha_requerida:res["fecha_requerida"], folio:res["folio"], num_contrato:res["num_contrato"], prioridad:res["prioridad"], proyecto:res["proyecto"], nombre_lider:res["nombre_lider"], autorizacion_totalgasto:res["autorizacion_totalgasto"], justificacion:justificacion, max_autorizadoES:max_autorizadoES, max_autorizadoFE:max_autorizadoFE, max_autorizadoIP:max_autorizadoIP, presupuesto_proyectoES:presupuesto_proyectoES, presupuesto_proyectoFE:presupuesto_proyectoFE, presupuesto_proyectoIP:presupuesto_proyectoIP, firma_autorizacion:firma_autorizacion, observaciones:observaciones, firma_encargadafinanzas:firma_encargadafinanzas, firma_rector:firma_rector, firmas_conformidad:firmas_conformidad}
+                let url = '/usuario/requisicion/data/'
+                let data = envio
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    success: function() {
+                        //window.location.reload();
+                        console.log("listo1");
+                    },
+                });
+                return(nod);
+            }
+        }).then(res=>{
+            let diccionario={csrfmiddlewaretoken: '{{ csrf_token }}'};
+            for(let i=0; i<res; i++){
+                let valor = document.getElementById(`nod${i}`).value;
+                diccionario[`id${i}`]=valor;
+            }
+            let url = '/usuario/requisicion/bienes/'
+            let data = diccionario
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: function() {
+                    window.location.reload();
+                    console.log("listo2");
+                },
+            });
+        })
+    }
 
 </script>
 {% endblock %}
