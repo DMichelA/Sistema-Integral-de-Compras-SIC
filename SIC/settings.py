@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'apps.login.middleware.SocialAuthExceptionMiddleware', # Atrapar errores
+    'apps.login.middleware.SocialAuthExceptionMiddleware', # Atrapar errores
 ]
 
 ROOT_URLCONF = 'SIC.urls'
@@ -161,5 +161,4 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login_success/' # Llama a la funcion para redireccionar a cada dashboard
 
-#TODO Descomentar el MIDDLEWARE
 #TODO Agregar usuarios a la BD

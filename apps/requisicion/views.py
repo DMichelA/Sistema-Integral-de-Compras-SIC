@@ -68,7 +68,7 @@ def requisiciones_listado_admin(request):
 def requisicion_save(request, id_requisicion):
     requisicion = Requisicion.objects.get(id=id_requisicion)
     cursor = connection.cursor()
-    cursor.execute("SELECT b.id, b.codigo_partida, b.cantidad_bienes, b.unidad_medida, b.descrip_general_bien, b.espeficaciones_tecnicas, b.precio_unitario, b.total FROM usuario_bienes AS b INNER JOIN requisicion_requisicion_bienes AS rb ON b.id = rb.bienes_id INNER JOIN requisicion_requisicion as r ON rb.requisicion_id = r.id WHERE rb.requisicion_id=%s;", [id_requisicion])
+    cursor.execute("SELECT b.id, b.codigo_partida, b.cantidad_bienes, b.unidad_medida, b.descrip_general_bien, b.especificaciones_tecnicas, b.precio_unitario, b.total FROM usuario_bienes AS b INNER JOIN requisicion_requisicion_bienes AS rb ON b.id = rb.bienes_id INNER JOIN requisicion_requisicion as r ON rb.requisicion_id = r.id WHERE rb.requisicion_id=%s;", [id_requisicion])
     bien = cursor.fetchall()
     columns = [col[0] for col in cursor.description]
     rows = [dict(zip(columns, row)) for row in bien]
@@ -81,7 +81,7 @@ def requisicion_save(request, id_requisicion):
 def requisicion_download(request, id_requisicion):
     requisicion = Requisicion.objects.get(id=id_requisicion)
     cursor = connection.cursor()
-    cursor.execute("SELECT b.id, b.codigo_partida, b.cantidad_bienes, b.unidad_medida, b.descrip_general_bien, b.espeficaciones_tecnicas, b.precio_unitario, b.total FROM usuario_bienes AS b INNER JOIN requisicion_requisicion_bienes AS rb ON b.id = rb.bienes_id INNER JOIN requisicion_requisicion as r ON rb.requisicion_id = r.id WHERE rb.requisicion_id=%s;", [id_requisicion])
+    cursor.execute("SELECT b.id, b.codigo_partida, b.cantidad_bienes, b.unidad_medida, b.descrip_general_bien, b.especificaciones_tecnicas, b.precio_unitario, b.total FROM usuario_bienes AS b INNER JOIN requisicion_requisicion_bienes AS rb ON b.id = rb.bienes_id INNER JOIN requisicion_requisicion as r ON rb.requisicion_id = r.id WHERE rb.requisicion_id=%s;", [id_requisicion])
     bien = cursor.fetchall()
     columns = [col[0] for col in cursor.description]
     rows = [dict(zip(columns, row)) for row in bien]

@@ -203,7 +203,7 @@ class Bienes(models.Model):
     codigo_partida = models.IntegerField()
     codigo_pestatal = models.IntegerField()
     descrip_general_bien = models.CharField(max_length=60, null=False, blank=True, default='Sin descripción') # Null False el formulario no requiere un valor, pero la base de datos sí. 
-    espeficaciones_tecnicas = models.CharField(max_length=60, null=False, blank=True)
+    especificaciones_tecnicas = models.CharField(max_length=60, null=False, blank=True)
     capitulo = models.IntegerField(
         null=False, blank=False,
         choices=capitulos
@@ -255,5 +255,3 @@ class Bienes(models.Model):
     def __str__(self):
         return '{}'.format(self.id)
     '''
-
-    #TODO Cambiar nombre a especificaciones_tecnicas
