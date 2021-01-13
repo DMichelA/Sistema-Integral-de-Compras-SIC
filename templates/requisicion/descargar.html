@@ -61,7 +61,7 @@ Requisicion | Descarga
             </thead>
             <thead class="text-center">
                 <th><img src="{% static 'img/sicutec.png' %}" height="50px" width="200px"></th>
-                <th colspan="4" style="font-size:29px;">REQUISICIÓN DE bien Y SERVICIOS</th>
+                <th colspan="4" style="font-size:29px;">REQUISICIÓN DE BIENES Y SERVICIOS</th>
             </thead>
             <thead>
                 <th WIDTH="100">F-22-01-R1;210817</th>
@@ -255,13 +255,28 @@ Requisicion | Descarga
         </table><br>
     </div>
 
-    <!--
     <div class="row">
         <div class="col text-center">
-            <button class="btn btn-primary" type= "button" onclick="recopilacion()">Guardar</button>
+            <button class="btn btn-primary" id="descargar" type= "button" onclick="descarga()">Descargar</button>
         </div>
-    -->
     </div><br>
 </form>
 
+{% endblock %}
+
+{% block scriptcode %}
+<script>
+
+    function descarga(){
+        let promy = new Promise((resolve, reject)=>{
+            document.getElementById("descargar").style.display="none";
+        resolve(1)
+        }).then(res=>{
+        if (res==1){
+          window.print();
+        }
+      })
+    }
+
+</script>
 {% endblock %}
