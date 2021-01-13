@@ -255,3 +255,5 @@ class Bienes(models.Model):
     def __str__(self):
         return '{}'.format(self.id)
     '''
+
+    #TODO Cambiar nombre a especificaciones_tecnicas

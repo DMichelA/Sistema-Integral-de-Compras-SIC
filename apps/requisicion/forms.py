@@ -57,10 +57,10 @@ class RequisicionForm(forms.ModelForm):
             'firmas_conformidad' : 'Nombre y  Firmas de Conformidad y Fecha'
         }
         widgets = {
-            'fecha_elaboracion': forms.DateInput(attrs={'class': 'form-control', 'id': 'datepicker', 'type': 'date'}),
+            'fecha_elaboracion': forms.DateInput(format=('%Y-%m-%d'), attrs={'class': 'form-control', 'id': 'datepicker', 'type': 'date'}),
             'periodo': forms.TextInput(attrs={'class': 'form-control'}),
             'folio': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Escribe el numero de Folio'}),
-            'fecha_requerida': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'fecha_requerida': forms.DateInput(format=('%Y-%m-%d'), attrs={'class': 'form-control', 'type': 'date'}),
             'num_contrato': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Escribe el numero de Contrato'}),
             'prioridad': forms.Select(attrs={'class': 'form-control'}),
             'proyecto': forms.Select(attrs={'class': 'form-control'}),

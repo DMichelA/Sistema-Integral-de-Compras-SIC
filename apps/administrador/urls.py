@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from apps.administrador.views import index, listado_bienes, bienes_adjudicar, bienes_adjudicados, \
 actualizar_bienes, eliminar_bienes, activar_permisos, actualizar_permiso
-from apps.requisicion.views import requisiciones_listado_admin
+from apps.requisicion.views import requisiciones_listado_admin, requisicion_download
 
 urlpatterns = [
     path('', index, name="administrador_index"),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('eliminar_bienes/<int:id_bien>/', eliminar_bienes, name="eliminacion_bienes"),
     path('permisos/', activar_permisos, name="asignar_permisos"),
     path('permisos/envio/', actualizar_permiso, name="actualizar_permiso"),
-    path('requisiciones/list/', requisiciones_listado_admin, name="listado_requisiciones"),
+    path('requisiciones_list/', requisiciones_listado_admin, name="listado_requisiciones"),
+    path('requisiciones_descarga/<int:id_requisicion>/', requisicion_download, name="requisicion_download"),
 ]

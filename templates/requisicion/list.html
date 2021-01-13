@@ -106,6 +106,7 @@ Listado | Requisiciones
                     <th class="text-center">Proyecto</th>
                     <th class="text-center">Nombre Lider Proyecto</th>
                     <th class="text-center">Gasto Total Autorizado</th>
+                    <th class="text-center">Descarga</th>
                 </tr>
             </thead>
             <tbody>
@@ -123,6 +124,9 @@ Listado | Requisiciones
                     <td>{{ requisicion.proyecto }}</td>
                     <td>{{ requisicion.nombre_lider }}</td>
                     <td>{{ requisicion.autorizacion_totalgasto }}</td>
+                    <td>
+                          <a class="btn btn-link" href="{% url 'requisicion_save' requisicion.id %}">Descargar</a>
+                    </td>
                 </tr>
                 {% endfor %}
                 {% else %}

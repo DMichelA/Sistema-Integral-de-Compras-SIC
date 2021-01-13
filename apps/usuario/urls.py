@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from apps.usuario.views import index, bienes_insert, bienes_list, bienes_update, bienes_delete, bienes_verificados
-from apps.requisicion.views import llenado_requisicion, envio_datos, envio_bienes, requisiciones_list
+from apps.requisicion.views import llenado_requisicion, envio_datos, envio_bienes, requisiciones_list, requisicion_save
 
 urlpatterns = [
     path('', index, name="usuario_index"),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('requisicion/', llenado_requisicion, name="requisicion"),
     path('requisicion/data/', envio_datos, name="requisicion_datos"),
     path('requisicion/bienes/', envio_bienes, name="requisicion_bienes"),
-    path('requisicion/list/', requisiciones_list, name="requisiciones_list"),
+    path('requisicion_list/', requisiciones_list, name="requisiciones_list"),
+    path('requisicion_save/<int:id_requisicion>/', requisicion_save, name="requisicion_save"),
 ]
