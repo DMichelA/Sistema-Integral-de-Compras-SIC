@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 
 from apps.usuario.forms import BienesForm
 from apps.usuario.models import Bienes
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/')
 def index(request):
     return render(request, 'usuario/index.html')
 
+@login_required(login_url='/')
 def bienes_insert(request):
     if request.method == 'POST':
         form = BienesForm(request.POST)
@@ -18,11 +21,13 @@ def bienes_insert(request):
         form = BienesForm()
     return render(request, 'usuario/insert.html', {'form':form})
 
+@login_required(login_url='/')
 def bienes_list(request):
     bien = Bienes.objects.filter(nombre_responsable=request.user).order_by('id')
     contexto = {'bienes':bien}
     return render(request, 'usuario/list.html', contexto)
 
+@login_required(login_url='/')
 def bienes_update(request, id_bien):
     bien = Bienes.objects.get(id=id_bien)
     if request.method == 'GET':
@@ -43,6 +48,7 @@ def bienes_delete(request, id_bien):
     return render(request, 'usuario/delete.html', {'bien':bien})
 '''
 
+@login_required(login_url='/')
 def bienes_delete(request, id_bien):
     bien = Bienes.objects.get(id=id_bien)
     if request.method == 'GET':
@@ -53,6 +59,7 @@ def bienes_delete(request, id_bien):
         return redirect('listar_bienes')
     return render(request, 'usuario/delete.html', {'form':form})
 
+@login_required(login_url='/')
 def bienes_verificados(request):
     bien = Bienes.objects.filter(nombre_responsable=request.user).order_by('id')
     contexto = {'bienes':bien}

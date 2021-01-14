@@ -4,7 +4,9 @@ from django.db import connection
 from apps.requisicion.forms import RequisicionForm
 from apps.usuario.models import Bienes
 from apps.requisicion.models import Requisicion, Requisicion_Bienes
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/')
 def llenado_requisicion(request):
     if request.method == 'POST':
         form = RequisicionForm(request.POST)
@@ -22,6 +24,7 @@ def llenado_requisicion(request):
     contexto = {'form':form, 'bienes':bien}
     return render(request, 'requisicion/formato.html', contexto)
 
+@login_required(login_url='/')
 def envio_datos(request):
     if request.method == 'POST':
         print(request.POST)
@@ -30,6 +33,7 @@ def envio_datos(request):
         r.save()
         return redirect('usuario_index')
 
+@login_required(login_url='/')
 def envio_bienes(request):
     requisicion_ids = Requisicion.objects.all().values_list('pk', flat=True)
     print(requisicion_ids)
@@ -55,16 +59,19 @@ def envio_bienes(request):
             rb.save()
         return redirect('usuario_index')
 
+@login_required(login_url='/')
 def requisiciones_list(request):
     requisicion = Requisicion.objects.filter(nombre_responsable=request.user).order_by('id')
     contexto = {'requisiciones':requisicion}
     return render(request, 'requisicion/list.html', contexto)
 
+@login_required(login_url='/')
 def requisiciones_listado_admin(request):
     requisicion = Requisicion.objects.all().order_by('id')
     contexto = {'requisiciones':requisicion}
     return render(request, 'requisicion/list_admin.html', contexto)
 
+@login_required(login_url='/')
 def requisicion_save(request, id_requisicion):
     requisicion = Requisicion.objects.get(id=id_requisicion)
     cursor = connection.cursor()
@@ -78,6 +85,7 @@ def requisicion_save(request, id_requisicion):
     contexto = {'form':form, 'bienes':rows}
     return render(request, 'requisicion/descargar.html', contexto)
 
+@login_required(login_url='/')
 def requisicion_download(request, id_requisicion):
     requisicion = Requisicion.objects.get(id=id_requisicion)
     cursor = connection.cursor()
