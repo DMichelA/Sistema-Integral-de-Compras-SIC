@@ -162,3 +162,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login_success/' # Llama a la funcion para redireccionar a cada dashboard
 
 #TODO Agregar usuarios a la BD
+#TODO Hacer pruebas a metodo de insercion requisiciones
+#TODO Calcular total de los Bienes/Servicios
